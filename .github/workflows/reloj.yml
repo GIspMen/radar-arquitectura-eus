@@ -1,0 +1,32 @@
+name: Actualizar Licitaciones Euskadi
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 07:00 AM (hora de España aprox.)
+    - cron: '0 6 * * *'
+  # Permite lanzarlo manualmente con un clic cuando quieras
+  workflow_dispatch:
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Extraer datos del Gobierno Vasco
+        run: python actualizar_datos.py
+
+      - name: Guardar cambios en la web
+        run: |
+          git config --local user.email "bot@radar-euskadi.local"
+          git config --local user.name "Radar Euskadi Bot"
+          git add licitaciones.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Actualización automática licitaciones" && git push)

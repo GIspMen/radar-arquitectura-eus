@@ -255,7 +255,7 @@ def procesar():
             u = e["_xml"] if e["_xml"].startswith("http") else "https://opendata.euskadi.eus" + e["_xml"]
             try:
                 txt = urllib.request.urlopen(urllib.request.Request(u, headers=HEADERS), timeout=12).read().decode("utf-8", errors="ignore")
-                print("MUESTRA XML ADJUDICADA:\n" + txt[:2200], flush=True)
+                print("MUESTRA XML ADJUDICADA:\n" + txt[:2200:6500], flush=True)
             except Exception as ex:
                 print("Error muestra XML:", ex, flush=True)
             break

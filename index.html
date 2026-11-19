@@ -1,1206 +1,424 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radar Licitaciones Arquitectura - Euskadi</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js para analítica estilo Power BI -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Fonts: Inter & JetBrains Mono para cifras y expedientes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        slate: {
-                            850: '#172033',
-                            900: '#0f172a',
-                        },
-                        cobalt: {
-                            600: '#1d4ed8',
-                            700: '#1e40af',
-                        },
-                        terracotta: {
-                            500: '#c2593f',
-                            600: '#a84730',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Personalización sutil de barras de desplazamiento */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radar Licitaciones Arquitectura · Euskadi (2023 - Actualidad)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+    .badge-abierta { background: #dcfce7; color: #166534; }
+    .badge-evaluacion { background: #fef9c3; color: #854d0e; }
+    .badge-adjudicada { background: #e0e7ff; color: #3730a3; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+<body class="min-h-screen flex flex-col">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3.5 gap-3">
-                <!-- Logo / Título -->
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
-                        <!-- Icono arquitectónico / escuadra -->
-                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M4 21V7l8-4 8 4v14M9 21v-6h6v6M9 10h.01M15 10h.01" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h1 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">Radar Licitaciones Arquitectura</h1>
-                            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">EUSKADI</span>
-                        </div>
-                        <p class="text-xs text-slate-500">Kontratazio Publikoa Euskadin · Inteligencia de Mercado y Bajas</p>
-                    </div>
-                </div>
-
-                <!-- Controles globales: Territorio e Importación -->
-                <div class="flex flex-wrap items-center gap-2.5">
-                    <!-- Selector de Territorio Histórico -->
-                    <div class="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200/80" id="territorySelector">
-                        <button data-territory="Todos" class="territory-btn px-3 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-900 shadow-xs transition">Todos</button>
-                        <button data-territory="Bizkaia" class="territory-btn px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:text-slate-900 transition">Bizkaia</button>
-                        <button data-territory="Gipuzkoa" class="territory-btn px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:text-slate-900 transition">Gipuzkoa</button>
-                        <button data-territory="Álava" class="territory-btn px-3 py-1.5 text-xs font-medium rounded-lg text-slate-600 hover:text-slate-900 transition">Álava</button>
-                    </div>
-
-                    <!-- Botón Importar / Conectar Open Data -->
-                    <button onclick="openImportModal()" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium shadow-xs transition cursor-pointer">
-                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                        </svg>
-                        <span>Importar CSV/JSON Open Data</span>
-                    </button>
-                </div>
-            </div>
+  <!-- Barra superior -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-slate-950 text-lg">
+          EUS
         </div>
-    </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-
-        <!-- 1. TARJETAS KPI SUPERIORES -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- KPI 1: PBL Total -->
-            <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Volumen Licitado (PBL)</span>
-                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <div id="kpiPbl" class="text-2xl font-bold font-mono text-slate-900">0 €</div>
-                    <p id="kpiCountSub" class="text-xs text-slate-500 mt-1">0 expedientes filtrados (sin IVA)</p>
-                </div>
-            </div>
-
-            <!-- KPI 2: Licitaciones Activas -->
-            <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Abiertas / En Plazo</span>
-                    <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <div class="flex items-baseline gap-2">
-                        <span id="kpiActive" class="text-2xl font-bold font-mono text-emerald-700">0</span>
-                        <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Presentación abierta</span>
-                    </div>
-                    <p id="kpiActivePbl" class="text-xs text-slate-500 mt-1">0 € en honorarios disponibles</p>
-                </div>
-            </div>
-
-            <!-- KPI 3: Baja Media -->
-            <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Baja Media Adjudicación</span>
-                    <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <div id="kpiAvgDiscount" class="text-2xl font-bold font-mono text-slate-900">0,0 %</div>
-                    <p id="kpiDiscountRange" class="text-xs text-slate-500 mt-1">Rango: --% a --% en adjudicadas</p>
-                </div>
-            </div>
-
-            <!-- KPI 4: Media de Licitadores -->
-            <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Media Licitadores</span>
-                    <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <div class="flex items-baseline gap-2">
-                        <span id="kpiAvgBidders" class="text-2xl font-bold font-mono text-slate-900">0,0</span>
-                        <span class="text-xs text-slate-500">estudios / concurso</span>
-                    </div>
-                    <p id="kpiMaxBidders" class="text-xs text-slate-500 mt-1">Máx. concurrencia: -- ofertas</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. PANEL DE FILTROS INTERACTIVOS -->
-        <section class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-xs">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-end">
-                <!-- Buscador de texto -->
-                <div class="md:col-span-4">
-                    <label for="searchInput" class="block text-xs font-semibold text-slate-600 mb-1.5">Buscar proyecto, expediente o estudio</label>
-                    <div class="relative">
-                        <input type="text" id="searchInput" placeholder="Ej: Visesa, PGOU, IDOM, centro salud, 7122..." 
-                            class="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition">
-                        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Filtro por Estado -->
-                <div class="md:col-span-2">
-                    <label for="statusFilter" class="block text-xs font-semibold text-slate-600 mb-1.5">Estado</label>
-                    <select id="statusFilter" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                        <option value="Todos">Todos los estados</option>
-                        <option value="En plazo">🟢 En plazo (Abierta)</option>
-                        <option value="En evaluación">🟡 En evaluación</option>
-                        <option value="Adjudicada">🔵 Adjudicada</option>
-                    </select>
-                </div>
-
-                <!-- Filtro por Categoría de Arquitectura -->
-                <div class="md:col-span-3">
-                    <label for="categoryFilter" class="block text-xs font-semibold text-slate-600 mb-1.5">Especialidad / Servicio</label>
-                    <select id="categoryFilter" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                        <option value="Todas">Todas las especialidades</option>
-                        <option value="Redacción de Proyecto">Redacción de Proyecto</option>
-                        <option value="Dirección de Obra">Dirección de Obra</option>
-                        <option value="Urbanismo / Planeamiento">Urbanismo / Planeamiento</option>
-                        <option value="Asistencia Técnica">Asistencia Técnica</option>
-                    </select>
-                </div>
-
-                <!-- Filtro por Organismo -->
-                <div class="md:col-span-2">
-                    <label for="orgFilter" class="block text-xs font-semibold text-slate-600 mb-1.5">Poder Adjudicador</label>
-                    <select id="orgFilter" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500">
-                        <option value="Todos">Todos los organismos</option>
-                    </select>
-                </div>
-
-                <!-- Botón Limpiar Filtros -->
-                <div class="md:col-span-1">
-                    <button onclick="resetFilters()" title="Restablecer filtros" class="w-full py-2 px-3 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-600 text-xs font-semibold transition flex items-center justify-center gap-1 cursor-pointer">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                        <span>Limpiar</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. GRÁFICOS ANALÍTICOS (ESTILO POWER BI) -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            <!-- Gráfico 1: Competitividad (Nº Licitadores vs % Baja) -->
-            <div class="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                    <div>
-                        <h2 class="text-sm font-bold text-slate-900">Competitividad: Nº Licitadores vs. % de Baja</h2>
-                        <p class="text-xs text-slate-500">Relación entre ofertas presentadas y agresividad económica en concursos cerrados</p>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 self-start">
-                        <span class="w-2 h-2 rounded-full bg-blue-600"></span> Adjudicadas / Evaluadas
-                    </span>
-                </div>
-                <div class="relative h-64 w-full">
-                    <canvas id="scatterChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Gráfico 2: Distribución de Presupuesto por Especialidad -->
-            <div class="lg:col-span-5 bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
-                <div class="mb-4">
-                    <h2 class="text-sm font-bold text-slate-900">Volumen de Honorarios por Especialidad</h2>
-                    <p class="text-xs text-slate-500">Distribución del PBL (€) según tipología de encargo arquitectónico</p>
-                </div>
-                <div class="relative h-64 w-full">
-                    <canvas id="categoryChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. TABLA PRINCIPAL INTERACTIVA Y ORDENABLE -->
-        <section class="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
-            <div class="px-5 py-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                    <h2 class="text-base font-bold text-slate-900">Listado de Expedientes y Adjudicaciones</h2>
-                    <p class="text-xs text-slate-500">Haz clic en los encabezados para ordenar o en <span class="font-medium text-slate-700">"Ver ficha"</span> para analizar criterios y licitadores</p>
-                </div>
-                <div class="text-xs font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg self-start sm:self-auto">
-                    Mostrando <span id="tableCount" class="font-bold text-slate-900">0</span> licitaciones
-                </div>
-            </div>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-slate-50/90 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500 select-none">
-                            <th class="py-3.5 px-4 cursor-pointer hover:text-slate-900" onclick="sortTable('id')">Expediente / CPV ↕</th>
-                            <th class="py-3.5 px-4 cursor-pointer hover:text-slate-900" onclick="sortTable('title')">Objeto y Organismo ↕</th>
-                            <th class="py-3.5 px-4 cursor-pointer hover:text-slate-900" onclick="sortTable('category')">Especialidad ↕</th>
-                            <th class="py-3.5 px-4 cursor-pointer hover:text-slate-900" onclick="sortTable('status')">Estado ↕</th>
-                            <th class="py-3.5 px-4 text-right cursor-pointer hover:text-slate-900" onclick="sortTable('pbl')">PBL (sin IVA) ↕</th>
-                            <th class="py-3.5 px-4 cursor-pointer hover:text-slate-900" onclick="sortTable('winner')">Adjudicatario ↕</th>
-                            <th class="py-3.5 px-4 text-right cursor-pointer hover:text-slate-900" onclick="sortTable('awardAmount')">Importe Adj. ↕</th>
-                            <th class="py-3.5 px-4 text-right cursor-pointer hover:text-slate-900" onclick="sortTable('discount')">% Baja ↕</th>
-                            <th class="py-3.5 px-4 text-center cursor-pointer hover:text-slate-900" onclick="sortTable('bidders')">Licitadores ↕</th>
-                            <th class="py-3.5 px-4 text-right">Ficha</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tendersTableBody" class="divide-y divide-slate-100 text-sm">
-                        <!-- Filas renderizadas dinámicamente por JS -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Estado vacío si no hay resultados -->
-            <div id="emptyState" class="hidden py-12 px-4 text-center">
-                <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <h3 class="text-sm font-bold text-slate-900">No se encontraron licitaciones con estos filtros</h3>
-                <p class="text-xs text-slate-500 mt-1">Prueba a cambiar el territorio o limpiar el buscador.</p>
-                <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition cursor-pointer">Restablecer todos los filtros</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- MODAL / PANEL LATERAL DE DETALLE DE LICITACIÓN -->
-    <div id="detailModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity" onclick="closeDetailModal()"></div>
-        <div class="flex min-h-full items-center justify-center p-4 sm:p-6">
-            <div class="relative w-full max-w-2xl rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
-                <!-- Cabecera Modal -->
-                <div class="bg-slate-900 px-6 py-4 text-white flex items-start justify-between gap-4">
-                    <div>
-                        <div class="flex items-center gap-2 text-xs text-blue-300 font-mono mb-1">
-                            <span id="modalExpId">EXP-000</span>
-                            <span>·</span>
-                            <span id="modalCpv">CPV 71221000</span>
-                        </div>
-                        <h3 id="modalTitle" class="text-base sm:text-lg font-bold leading-snug">Título del contrato</h3>
-                    </div>
-                    <button onclick="closeDetailModal()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition cursor-pointer">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
-                </div>
-
-                <!-- Cuerpo Modal -->
-                <div class="p-6 space-y-5 max-h-[80vh] overflow-y-auto">
-                    <!-- Metadatos principales -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
-                        <div>
-                            <span class="block text-[11px] font-semibold uppercase text-slate-400">Organismo</span>
-                            <span id="modalOrg" class="text-xs font-bold text-slate-800 mt-0.5 block">-</span>
-                        </div>
-                        <div>
-                            <span class="block text-[11px] font-semibold uppercase text-slate-400">Territorio</span>
-                            <span id="modalTerritory" class="text-xs font-bold text-slate-800 mt-0.5 block">-</span>
-                        </div>
-                        <div>
-                            <span class="block text-[11px] font-semibold uppercase text-slate-400">Estado / Fecha</span>
-                            <span id="modalStatus" class="text-xs font-bold text-slate-800 mt-0.5 block">-</span>
-                        </div>
-                    </div>
-
-                    <!-- Bloque Económico y Competencia -->
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <div class="p-3.5 rounded-xl border border-slate-200 bg-white">
-                            <span class="text-[11px] text-slate-500 block">Presupuesto Base</span>
-                            <span id="modalPbl" class="text-sm font-bold font-mono text-slate-900 mt-1 block">0 €</span>
-                        </div>
-                        <div class="p-3.5 rounded-xl border border-slate-200 bg-white">
-                            <span class="text-[11px] text-slate-500 block">Adjudicación</span>
-                            <span id="modalAward" class="text-sm font-bold font-mono text-slate-900 mt-1 block">Pendiente</span>
-                        </div>
-                        <div class="p-3.5 rounded-xl border border-slate-200 bg-white">
-                            <span class="text-[11px] text-slate-500 block">% Baja Aplicada</span>
-                            <span id="modalDiscount" class="text-sm font-bold font-mono text-blue-700 mt-1 block">-</span>
-                        </div>
-                        <div class="p-3.5 rounded-xl border border-slate-200 bg-white">
-                            <span class="text-[11px] text-slate-500 block">Concurrencia</span>
-                            <span id="modalBidders" class="text-sm font-bold font-mono text-indigo-700 mt-1 block">-</span>
-                        </div>
-                    </div>
-
-                    <!-- Adjudicatario y Licitadores -->
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Resolución y Estudios Presentados</h4>
-                        <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-100">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-600">Adjudicatario / UTE Ganadora:</span>
-                                <span id="modalWinner" class="text-sm font-bold text-slate-900">-</span>
-                            </div>
-                            <p id="modalBiddersDetail" class="text-xs text-slate-600 mt-2 pt-2 border-t border-blue-100/80">
-                                Detalle de licitadores...
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Criterios de Adjudicación -->
-                    <div class="space-y-2">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Ponderación de Criterios (Pliego)</h4>
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-medium">
-                                <span class="text-slate-700">Juicio de Valor (Propuesta Técnica / Arquitectónica): <strong id="modalTechWeight">50%</strong></span>
-                                <span class="text-slate-700">Fórmulas (Oferta Económica): <strong id="modalPriceWeight">50%</strong></span>
-                            </div>
-                            <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden flex">
-                                <div id="modalTechBar" class="bg-slate-800 h-full" style="width: 50%"></div>
-                                <div id="modalPriceBar" class="bg-blue-600 h-full" style="width: 50%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Nota de inteligencia / análisis -->
-                    <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200/80">
-                        <div class="flex items-center gap-2 text-xs font-bold text-amber-900 mb-1">
-                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <span>Nota de Análisis para el Estudio</span>
-                        </div>
-                        <p id="modalNotes" class="text-xs text-amber-950/90 leading-relaxed">-</p>
-                    </div>
-                </div>
-
-                <!-- Pie del Modal -->
-                <div class="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3">
-                    <a href="https://www.contratacion.euskadi.eus/" target="_blank" rel="noopener noreferrer" 
-                       class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 hover:text-blue-800">
-                        <span>Abrir en Kontratazio Publikoa Euskadin</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                    </a>
-                    <button onclick="closeDetailModal()" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition cursor-pointer">
-                        Cerrar ficha
-                    </button>
-                </div>
-            </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-semibold leading-tight">Kontratazioa · Radar Arquitectura</h1>
+          <p class="text-xs text-slate-400">Perfil del Contratante Euskadi (CPV 712 / 713 / 714 / 715)</p>
         </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span id="estadoDatos" class="inline-flex items-center gap-1.5 text-xs bg-slate-800 text-emerald-400 px-3 py-1.5 rounded-full border border-slate-700">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Cargando datos...
+        </span>
+      </div>
     </div>
+  </header>
 
-    <!-- MODAL EXPLICATIVO DE CONEXIÓN CON OPEN DATA EUSKADI -->
-    <div id="importModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs" onclick="closeImportModal()"></div>
-        <div class="flex min-h-full items-center justify-center p-4">
-            <div class="relative w-full max-w-xl rounded-2xl bg-white shadow-2xl border border-slate-200 overflow-hidden">
-                <div class="bg-slate-900 px-6 py-4 text-white flex items-center justify-between">
-                    <h3 class="text-base font-bold">Cómo alimentar con datos reales de Euskadi</h3>
-                    <button onclick="closeImportModal()" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white cursor-pointer">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
-                </div>
-                <div class="p-6 space-y-4 text-xs text-slate-600 leading-relaxed">
-                    <p class="text-sm text-slate-800 font-medium">
-                        El Gobierno Vasco publica todas las licitaciones y adjudicaciones en abierto a través de <strong>Open Data Euskadi</strong> y su plataforma de contratación.
-                    </p>
-                    <div class="space-y-2.5 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <div class="flex gap-3">
-                            <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0">1</span>
-                            <div>
-                                <strong class="text-slate-900 block">Filtrado automático por códigos CPV de Arquitectura:</strong>
-                                Nuestro extractor filtra únicamente los expedientes con códigos <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-slate-800">71200000</code> (Servicios de arquitectura), <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-slate-800">71221000</code> (Proyectos de edificios), <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-slate-800">71410000</code> (Urbanismo) y <code class="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-slate-800">71520000</code> (Supervisión/Dirección de obra).
-                            </div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0">2</span>
-                            <div>
-                                <strong class="text-slate-900 block">Lectura del Nº de Licitadores y Adjudicación:</strong>
-                                De los XML/JSON de formalización de Open Data Euskadi se extraen el campo <em>"Número de ofertas recibidas"</em>, el NIF/Nombre del estudio adjudicatario y el importe final sin IVA.
-                            </div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="w-5 h-5 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0">3</span>
-                            <div>
-                                <strong class="text-slate-900 block">Carga directa aquí (o automatizada cada mañana):</strong>
-                                Puedes subir un archivo JSON exportado desde el buscador de Kontratazioa o conectar el script en Python que te prepararé en el siguiente paso.
-                            </div>
-                        </div>
-                    </div>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-6">
 
-                    <!-- Carga de archivo JSON simulada/funcional -->
-                    <div class="pt-2">
-                        <label class="block font-semibold text-slate-800 mb-1.5">Cargar archivo JSON personalizado (opcional):</label>
-                        <input type="file" id="jsonFileInput" accept=".json" onchange="handleJsonUpload(event)" 
-                            class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer border border-slate-200 rounded-xl p-1.5">
-                        <p id="uploadFeedback" class="mt-2 text-xs font-medium text-emerald-700 hidden"></p>
-                    </div>
-                </div>
-                <div class="bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex justify-end">
-                    <button onclick="closeImportModal()" class="px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 cursor-pointer">Entendido</button>
-                </div>
-            </div>
+    <!-- Panel de Filtros -->
+    <section class="card p-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+        <div>
+          <label class="block text-xs font-medium text-slate-500 mb-1">Año</label>
+          <select id="filtroAnio" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="TODOS">Todos (2023 - Hoy)</option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
         </div>
-    </div>
 
-    <!-- LÓGICA DE DATOS Y ANALÍTICA -->
-    <script>
-        // DATASET REALISTA DE EUSKADI (14 Licitaciones de Arquitectura, Urbanismo, DO y Asistencia Técnica)
-        let tendersData = [
-            {
-                id: "VIS-2026/014",
-                cpv: "71221000",
-                title: "Redacción de Proyecto Básico y de Ejecución y Dirección de Obra de 68 VPO en Zorrotzaurre (Parcela RZ-10)",
-                org: "VISESA (Vivienda y Suelo de Euskadi)",
-                territory: "Bizkaia",
-                category: "Redacción de Proyecto",
-                status: "Adjudicada",
-                deadline: "Adjudicada 14/10/2026",
-                pbl: 485000,
-                winner: "UTE BEAR Arquitectos + Estudio Beldarrain",
-                awardAmount: 383150,
-                bidders: 14,
-                techWeight: 60,
-                priceWeight: 40,
-                biddersDetail: "Concurrieron 14 estudios/UTEs (incluyendo IDOM, LKS Krean, Suquía, Coll-Barreu y estudios locales). Baja media del concurso: 18,4%.",
-                notes: "Concurso con alto peso técnico (60% juicio de valor). La UTE ganadora obtuvo la máxima puntuación en eficiencia energética Passivhaus con una baja moderada del 21%."
-            },
-            {
-                id: "OSA-2026/089",
-                cpv: "71221000",
-                title: "Redacción de Proyecto de Ejecución del Nuevo Centro de Salud de Txomin Enea",
-                org: "Osakidetza - Servicio Vasco de Salud",
-                territory: "Gipuzkoa",
-                category: "Redacción de Proyecto",
-                status: "Adjudicada",
-                deadline: "Adjudicada 02/11/2026",
-                pbl: 320000,
-                winner: "VAUMM Arquitectura y Urbanismo SLP",
-                awardAmount: 259200,
-                bidders: 11,
-                techWeight: 55,
-                priceWeight: 45,
-                biddersDetail: "11 ofertas admitidas. 2 ofertas incurrieron en presunción de temeridad (>28% baja) y fueron descartadas tras audiencia.",
-                notes: "Criterio clave: integración urbana con el parque fluvial del Urumea y flexibilidad de consultas. Baja ganadora del 19,0%."
-            },
-            {
-                id: "AYT-BIL-26/112",
-                cpv: "71410000",
-                title: "Revisión Parcial del PGOU de Bilbao en el ámbito industrial de Olabeaga",
-                org: "Ayuntamiento de Bilbao",
-                territory: "Bizkaia",
-                category: "Urbanismo / Planeamiento",
-                status: "En plazo",
-                deadline: "Cierra: 04/12/2026",
-                pbl: 275000,
-                winner: "Pendiente",
-                awardAmount: null,
-                bidders: null,
-                techWeight: 65,
-                priceWeight: 35,
-                biddersDetail: "Plazo de presentación de ofertas actualmente abierto en la plataforma Kontratazioa.",
-                notes: "Muy interesante para equipos multidisciplinares (arquitectos urbanistas + movilidad + medio ambiente). Requiere solvencia previa en planeamiento general."
-            },
-            {
-                id: "DFA-2026/041",
-                cpv: "71520000",
-                title: "Dirección Facultativa y Coordinación de Seguridad y Salud de la rehabilitación del Palacio Álava-Esquivel",
-                org: "Diputación Foral de Álava",
-                territory: "Álava",
-                category: "Dirección de Obra",
-                status: "Adjudicada",
-                deadline: "Adjudicada 19/09/2026",
-                pbl: 210000,
-                winner: "IDOM Consulting, Engineering, Architecture",
-                awardAmount: 159600,
-                bidders: 7,
-                techWeight: 50,
-                priceWeight: 50,
-                biddersDetail: "7 ofertas presentadas. Competencia concentrada en equipos con experiencia acreditada en patrimonio catalogado (BIC).",
-                notes: "Baja del 24,0%. La exigencia de arquitecto especialista en restauración redujo la concurrencia frente a obra nueva."
-            },
-            {
-                id: "GV-EDU-26/033",
-                cpv: "71221000",
-                title: "Proyecto y Dirección de Obra de ampliación del IES Zabalgana (12 nuevas aulas y gimnasio)",
-                org: "Gobierno Vasco - Dpto. Educación",
-                territory: "Álava",
-                category: "Redacción de Proyecto",
-                status: "En evaluación",
-                deadline: "Mesa apertura: 26/11/2026",
-                pbl: 390000,
-                winner: "En valoración técnica",
-                awardAmount: null,
-                bidders: 16,
-                techWeight: 50,
-                priceWeight: 50,
-                biddersDetail: "16 licitadores presentados (récord de concurrencia del trimestre en Álava). Pendiente de abrir sobre económico.",
-                notes: "Alta competencia (16 ofertas). Previsiblemente la baja de adjudicación se situará entre el 22% y el 28%."
-            },
-            {
-                id: "AYT-DON-26/078",
-                cpv: "71410000",
-                title: "Redacción del Plan Especial de Rehabilitación y Regeneración Urbana del barrio de Egia",
-                org: "Ayuntamiento de Donostia / San Sebastián",
-                territory: "Gipuzkoa",
-                category: "Urbanismo / Planeamiento",
-                status: "Adjudicada",
-                deadline: "Adjudicada 08/10/2026",
-                pbl: 165000,
-                winner: "LKS Krean S. Coop.",
-                awardAmount: 138600,
-                bidders: 5,
-                techWeight: 60,
-                priceWeight: 40,
-                biddersDetail: "5 ofertas recibidas. Baja contenida (16,0%) debido a la complejidad de participación ciudadana exigida en pliegos.",
-                notes: "Los trabajos de planeamiento especial en Gipuzkoa suelen tener menor número de licitadores (4-6) y bajas más moderadas que la edificación."
-            },
-            {
-                id: "ALO-2026/019",
-                cpv: "71240000",
-                title: "Asistencia Técnica para auditoría energética y proyectos de envolvente térmica en parque público (14 bloques)",
-                org: "ALOKABIDE",
-                territory: "Bizkaia",
-                category: "Asistencia Técnica",
-                status: "Adjudicada",
-                deadline: "Adjudicada 25/09/2026",
-                pbl: 145000,
-                winner: "Arizmendi & Arquitectos Asociados",
-                awardAmount: 95700,
-                bidders: 12,
-                techWeight: 35,
-                priceWeight: 65,
-                biddersDetail: "12 ofertas presentadas. Pliego muy orientado a precio (65% fórmula económica).",
-                notes: "Baja muy agresiva del 34,0%. Típico comportamiento en asistencias técnicas donde el peso del precio supera el 60%."
-            },
-            {
-                id: "AYT-VIT-26/054",
-                cpv: "71222000",
-                title: "Proyecto de Urbanización y reordenación peatonal de la calle Los Herrán (Fase II)",
-                org: "Ayuntamiento de Vitoria-Gasteiz",
-                territory: "Álava",
-                category: "Urbanismo / Planeamiento",
-                status: "En plazo",
-                deadline: "Cierra: 11/12/2026",
-                pbl: 240000,
-                winner: "Pendiente",
-                awardAmount: null,
-                bidders: null,
-                techWeight: 55,
-                priceWeight: 45,
-                biddersDetail: "En plazo de presentación. Visita técnica guiada programada para el próximo martes.",
-                notes: "Proyecto de infraestructura verde urbana. Se valora especialmente la integración de sistemas urbanos de drenaje sostenible (SUDS)."
-            },
-            {
-                id: "DFB-2026/103",
-                cpv: "71520000",
-                title: "Dirección de Obra de ejecución del nuevo Bidegorri y pasarela peatonal sobre el río Nervión en Basauri",
-                org: "Diputación Foral de Bizkaia",
-                territory: "Bizkaia",
-                category: "Dirección de Obra",
-                status: "Adjudicada",
-                deadline: "Adjudicada 30/10/2026",
-                pbl: 195000,
-                winner: "UTE Esteyco + Estudio Arq. Bilbao",
-                awardAmount: 161850,
-                bidders: 6,
-                techWeight: 50,
-                priceWeight: 50,
-                biddersDetail: "6 UTEs presentadas (combinación ingeniería estructural + arquitectura paisajista).",
-                notes: "Baja del 17,0%. Baja dispersión entre las ofertas económicas (todas entre el 12% y el 19%)."
-            },
-            {
-                id: "SPR-2026/022",
-                cpv: "71410000",
-                title: "Modificación de Plan Parcial del Polígono Industrial Eskuzaitzeta (Parcelas terciarias)",
-                org: "SPRI - Agencia Vasca de Desarrollo Empresarial",
-                territory: "Gipuzkoa",
-                category: "Urbanismo / Planeamiento",
-                status: "Adjudicada",
-                deadline: "Adjudicada 12/09/2026",
-                pbl: 98000,
-                winner: "Studio Urbanismo Donostia SLP",
-                awardAmount: 86240,
-                bidders: 3,
-                techWeight: 55,
-                priceWeight: 45,
-                biddersDetail: "Solo 3 ofertas presentadas por plazos de entrega muy ajustados (3 meses).",
-                notes: "Baja reducida del 12,0%. Cuando los plazos de redacción son muy cortos, cae la concurrencia y los honorarios se defienden mejor."
-            },
-            {
-                id: "OSA-2026/115",
-                cpv: "71240000",
-                title: "Asistencia Técnica para redacción de Plan Director de Infraestructuras del Hospital Universitario Cruces",
-                org: "Osakidetza - Servicio Vasco de Salud",
-                territory: "Bizkaia",
-                category: "Asistencia Técnica",
-                status: "En plazo",
-                deadline: "Cierra: 18/12/2026",
-                pbl: 410000,
-                winner: "Pendiente",
-                awardAmount: null,
-                bidders: null,
-                techWeight: 60,
-                priceWeight: 40,
-                biddersDetail: "Abierto a presentación electrónica. Licitación sujeta a regulación armonizada (SARA).",
-                notes: "Contrato estratégico de alto presupuesto. Exige equipo con experiencia hospitalaria en los últimos 5 años."
-            },
-            {
-                id: "AYT-GET-26/019",
-                cpv: "71221000",
-                title: "Redacción de Proyecto y Dirección de Obra de rehabilitación energética de las Escuelas de Romo",
-                org: "Ayuntamiento de Getxo",
-                territory: "Bizkaia",
-                category: "Redacción de Proyecto",
-                status: "Adjudicada",
-                deadline: "Adjudicada 04/11/2026",
-                pbl: 178000,
-                winner: "Muga Arquitectura & Sostenibilidad",
-                awardAmount: 131720,
-                bidders: 9,
-                techWeight: 45,
-                priceWeight: 55,
-                biddersDetail: "9 ofertas presentadas. Ganador obtuvo la 2ª mejor nota técnica y la 1ª económica.",
-                notes: "Baja del 26,0%. Ejemplo claro de cómo un peso económico del 55% empuja las bajas por encima del 25%."
-            },
-            {
-                id: "DFG-2026/067",
-                cpv: "71520000",
-                title: "Dirección Facultativa de las obras de construcción del nuevo Centro Gerontológico de Elgoibar",
-                org: "Diputación Foral de Gipuzkoa",
-                territory: "Gipuzkoa",
-                category: "Dirección de Obra",
-                status: "En evaluación",
-                deadline: "Mesa apertura: 29/11/2026",
-                pbl: 285000,
-                winner: "En valoración técnica",
-                awardAmount: null,
-                bidders: 8,
-                techWeight: 55,
-                priceWeight: 45,
-                biddersDetail: "8 estudios/UTEs admitidos. En fase de emisión de informe técnico sobre metodología de control de obra.",
-                notes: "Concurrencia media-alta (8 ofertas). El seguimiento semanal presencial en obra puntúa de forma destacada."
-            },
-            {
-                id: "AYT-ZAR-26/008",
-                cpv: "71410000",
-                title: "Avance y Documento Inicial Estratégico de la revisión del PGOU de Zarautz",
-                org: "Ayuntamiento de Zarautz",
-                territory: "Gipuzkoa",
-                category: "Urbanismo / Planeamiento",
-                status: "Adjudicada",
-                deadline: "Adjudicada 21/08/2026",
-                pbl: 135000,
-                winner: "Territorio y Ciudad Euskadi SLP",
-                awardAmount: 124200,
-                bidders: 2,
-                techWeight: 65,
-                priceWeight: 35,
-                biddersDetail: "Únicamente 2 ofertas presentadas.",
-                notes: "Baja mínima del 8,0%. Con 2 licitadores y 65% de peso técnico, prácticamente no hubo guerra de precios."
-            }
-        ];
+        <div>
+          <label class="block text-xs font-medium text-slate-500 mb-1">Estado</label>
+          <select id="filtroEstado" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="TODOS">Todos los estados</option>
+            <option value="En plazo">🟢 En plazo (Abiertas)</option>
+            <option value="En evaluación">🟡 En evaluación</option>
+            <option value="Adjudicada">🔵 Adjudicadas</option>
+          </select>
+        </div>
 
-        // Estado de filtros y ordenación
-        let currentFilters = {
-            territory: "Todos",
-            search: "",
-            status: "Todos",
-            category: "Todas",
-            org: "Todos"
-        };
-        let currentSort = { key: "pbl", asc: false };
-        let scatterChartInstance = null;
-        let categoryChartInstance = null;
+        <div>
+          <label class="block text-xs font-medium text-slate-500 mb-1">Tipo de Servicio</label>
+          <select id="filtroTipo" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="TODOS">Todos los servicios</option>
+            <option value="Redacción de Proyecto">Redacción de Proyecto</option>
+            <option value="Dirección de Obra">Dirección de Obra</option>
+            <option value="Urbanismo y Planeamiento">Urbanismo y Planeamiento</option>
+            <option value="Asistencia Técnica">Asistencia Técnica</option>
+          </select>
+        </div>
 
-        // Utilidades de formateo
-        const formatCurrency = (val) => {
-            if (val === null || val === undefined) return "—";
-            return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(val);
-        };
+        <div>
+          <label class="block text-xs font-medium text-slate-500 mb-1">Territorio</label>
+          <select id="filtroTerritorio" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="TODOS">Todo Euskadi</option>
+            <option value="Bizkaia">Bizkaia</option>
+            <option value="Gipuzkoa">Gipuzkoa</option>
+            <option value="Álava">Álava / Araba</option>
+            <option value="Euskadi (Autonómico)">Autonómico / Otros</option>
+          </select>
+        </div>
 
-        const calcDiscount = (pbl, award) => {
-            if (!pbl || !award) return null;
-            return ((pbl - award) / pbl) * 100;
-        };
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-medium text-slate-500 mb-1">Buscar estudio ganador, ayuntamiento o palabra clave</label>
+          <div class="relative">
+            <input id="buscador" type="text" placeholder="Ej: Osakidetza, Visesa, Bilbao, escuela, PGOU..." class="w-full text-sm border border-slate-300 rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            <button id="btnLimpiar" class="hidden absolute right-2 top-2 text-slate-400 hover:text-slate-600 text-sm font-bold">✕</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Inicialización
-        document.addEventListener("DOMContentLoaded", () => {
-            populateOrgFilter();
-            setupEventListeners();
-            updateDashboard();
-        });
+    <!-- KPIs principales -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="card p-4">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Expedientes filtrados</p>
+        <p id="kpiTotal" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+        <p id="kpiAbiertasSub" class="text-xs text-emerald-600 font-medium mt-1">0 abiertas ahora</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Volumen Licitado (Sin IVA)</p>
+        <p id="kpiPresupuesto" class="text-2xl font-bold text-slate-900 mt-1">0 €</p>
+        <p class="text-xs text-slate-400 mt-1">Presupuesto base (PBL)</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Baja Media Adjudicada</p>
+        <p id="kpiBajaMedia" class="text-2xl font-bold text-indigo-600 mt-1">0,0%</p>
+        <p id="kpiBajaRango" class="text-xs text-slate-400 mt-1">Mín: 0% · Máx: 0%</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Media Licitadores</p>
+        <p id="kpiLicitadores" class="text-2xl font-bold text-amber-600 mt-1">0,0</p>
+        <p class="text-xs text-slate-400 mt-1">Ofertas por concurso</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Ahorro Administración</p>
+        <p id="kpiAhorro" class="text-2xl font-bold text-emerald-600 mt-1">0 €</p>
+        <p class="text-xs text-slate-400 mt-1">Diferencia PBL vs Adjudicado</p>
+      </div>
+    </section>
 
-        function populateOrgFilter() {
-            const orgSelect = document.getElementById("orgFilter");
-            const currentVal = orgSelect.value;
-            const orgs = [...new Set(tendersData.map(t => t.org))].sort();
-            orgSelect.innerHTML = '<option value="Todos">Todos los organismos</option>';
-            orgs.forEach(org => {
-                const opt = document.createElement("option");
-                opt.value = org;
-                opt.textContent = org;
-                orgSelect.appendChild(opt);
-            });
-            if (orgs.includes(currentVal)) orgSelect.value = currentVal;
+    <!-- Gráficos Analíticos -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h2 class="text-sm font-semibold text-slate-800">Competitividad: Nº Licitadores vs. % de Baja</h2>
+            <p class="text-xs text-slate-500">Cada punto es una licitación adjudicada (pasa el ratón para ver detalles)</p>
+          </div>
+        </div>
+        <div class="h-64">
+          <canvas id="chartDispersion"></canvas>
+        </div>
+      </div>
+
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h2 class="text-sm font-semibold text-slate-800">Baja Media y Licitadores por Tipo de Contrato</h2>
+            <p class="text-xs text-slate-500">Comparativa según especialidad de arquitectura/urbanismo</p>
+          </div>
+        </div>
+        <div class="h-64">
+          <canvas id="chartTipos"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla de Licitaciones -->
+    <section class="card overflow-hidden">
+      <div class="p-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-base font-semibold text-slate-800">Listado de Expedientes</h2>
+          <p class="text-xs text-slate-500">Mostrando hasta 150 expedientes más recientes del filtro actual</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="ordenSelect" class="border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white font-medium text-slate-700">
+            <option value="fecha_desc">Fecha (Más recientes)</option>
+            <option value="pbl_desc">Presupuesto (Mayor a menor)</option>
+            <option value="baja_desc">% Baja (Mayor a menor)</option>
+            <option value="licitadores_desc">Nº Licitadores (Mayor a menor)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+              <th class="py-3 px-4">Fecha / Estado</th>
+              <th class="py-3 px-4">Objeto del Contrato y Órgano</th>
+              <th class="py-3 px-4">Servicio</th>
+              <th class="py-3 px-4 text-right">PBL (Sin IVA)</th>
+              <th class="py-3 px-4 text-right">Adjudicación</th>
+              <th class="py-3 px-4 text-center">% Baja</th>
+              <th class="py-3 px-4 text-center">Licitadores</th>
+              <th class="py-3 px-4">Adjudicatario</th>
+            </tr>
+          </thead>
+          <tbody id="tablaBody" class="divide-y divide-slate-100 text-sm">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    let datosGlobales = [];
+    let chartDispersion = null;
+    let chartTipos = null;
+
+    const formatoEuro = (num) => {
+      if (num === null || num === undefined || isNaN(num)) return "—";
+      return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(num);
+    };
+
+    async function cargarDatos() {
+      const badge = document.getElementById("estadoDatos");
+      try {
+        // Añadimos parámetro de tiempo para evitar caché antigua del navegador
+        const resp = await fetch("licitaciones.json?t=" + new Date().getTime());
+        if (!resp.ok) throw new Error("No se encontró licitaciones.json");
+        const json = await resp.json();
+        datosGlobales = json.licitaciones || [];
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Actualizado: ${json.ultima_actualizacion} (${datosGlobales.length} exp.)`;
+      } catch (err) {
+        console.warn("Cargando modo sin conexión o archivo aún no generado:", err);
+        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400"></span> Sin datos cargados aún`;
+        datosGlobales = [];
+      }
+      aplicarFiltros();
+    }
+
+    function aplicarFiltros() {
+      const anio = document.getElementById("filtroAnio").value;
+      const estado = document.getElementById("filtroEstado").value;
+      const tipo = document.getElementById("filtroTipo").value;
+      const territorio = document.getElementById("filtroTerritorio").value;
+      const texto = document.getElementById("buscador").value.toLowerCase().trim();
+      const orden = document.getElementById("ordenSelect").value;
+
+      document.getElementById("btnLimpiar").classList.toggle("hidden", texto.length === 0);
+
+      let filtrados = datosGlobales.filter(item => {
+        if (anio !== "TODOS" && !(item.fecha || "").startsWith(anio)) return false;
+        if (estado !== "TODOS" && item.estado !== estado) return false;
+        if (tipo !== "TODOS" && item.tipo !== tipo) return false;
+        if (territorio !== "TODOS" && item.territorio !== territorio) return false;
+        if (texto) {
+          const bloque = `${item.titulo} ${item.organismo} ${item.adjudicatario || ""} ${item.id} ${item.cpv}`.toLowerCase();
+          if (!bloque.includes(texto)) return false;
         }
+        return true;
+      });
 
-        function setupEventListeners() {
-            // Botones de territorio
-            document.querySelectorAll(".territory-btn").forEach(btn => {
-                btn.addEventListener("click", () => {
-                    document.querySelectorAll(".territory-btn").forEach(b => {
-                        b.classList.remove("bg-white", "text-slate-900", "shadow-xs", "font-semibold");
-                        b.classList.add("text-slate-600", "font-medium");
-                    });
-                    btn.classList.add("bg-white", "text-slate-900", "shadow-xs", "font-semibold");
-                    btn.classList.remove("text-slate-600", "font-medium");
-                    currentFilters.territory = btn.dataset.territory;
-                    updateDashboard();
-                });
-            });
+      // Ordenación
+      filtrados.sort((a, b) => {
+        if (orden === "fecha_desc") return (b.fecha || "").localeCompare(a.fecha || "");
+        if (orden === "pbl_desc") return (b.pbl || 0) - (a.pbl || 0);
+        if (orden === "baja_desc") return (b.baja ?? -1) - (a.baja ?? -1);
+        if (orden === "licitadores_desc") return (b.licitadores ?? -1) - (a.licitadores ?? -1);
+        return 0;
+      });
 
-            document.getElementById("searchInput").addEventListener("input", (e) => {
-                currentFilters.search = e.target.value.toLowerCase().trim();
-                updateDashboard();
-            });
-            document.getElementById("statusFilter").addEventListener("change", (e) => {
-                currentFilters.status = e.target.value;
-                updateDashboard();
-            });
-            document.getElementById("categoryFilter").addEventListener("change", (e) => {
-                currentFilters.category = e.target.value;
-                updateDashboard();
-            });
-            document.getElementById("orgFilter").addEventListener("change", (e) => {
-                currentFilters.org = e.target.value;
-                updateDashboard();
-            });
-        }
+      actualizarKPIs(filtrados);
+      actualizarGraficos(filtrados);
+      renderizarTabla(filtrados);
+    }
 
-        function resetFilters() {
-            currentFilters = { territory: "Todos", search: "", status: "Todos", category: "Todas", org: "Todos" };
-            document.getElementById("searchInput").value = "";
-            document.getElementById("statusFilter").value = "Todos";
-            document.getElementById("categoryFilter").value = "Todas";
-            document.getElementById("orgFilter").value = "Todos";
-            
-            document.querySelectorAll(".territory-btn").forEach(b => {
-                b.classList.remove("bg-white", "text-slate-900", "shadow-xs", "font-semibold");
-                b.classList.add("text-slate-600", "font-medium");
-                if (b.dataset.territory === "Todos") {
-                    b.classList.add("bg-white", "text-slate-900", "shadow-xs", "font-semibold");
-                    b.classList.remove("text-slate-600", "font-medium");
+    function actualizarKPIs(lista) {
+      const total = lista.length;
+      const abiertas = lista.filter(x => x.estado === "En plazo").length;
+      const volPBL = lista.reduce((acc, x) => acc + (x.pbl || 0), 0);
+
+      const adjudicadas = lista.filter(x => x.baja !== null && x.baja !== undefined && x.baja >= 0);
+      const bajas = adjudicadas.map(x => x.baja);
+      const bajaMedia = bajas.length ? (bajas.reduce((a, b) => a + b, 0) / bajas.length) : 0;
+      const bajaMin = bajas.length ? Math.min(...bajas) : 0;
+      const bajaMax = bajas.length ? Math.max(...bajas) : 0;
+
+      const conLicitadores = lista.filter(x => x.licitadores !== null && x.licitadores > 0);
+      const mediaLic = conLicitadores.length ? (conLicitadores.reduce((a, b) => a + b.licitadores, 0) / conLicitadores.length) : 0;
+
+      const ahorro = adjudicadas.reduce((acc, x) => acc + ((x.pbl || 0) - (x.adjudicacion || 0)), 0);
+
+      document.getElementById("kpiTotal").textContent = total.toLocaleString("es-ES");
+      document.getElementById("kpiAbiertasSub").textContent = `${abiertas} en plazo ahora`;
+      document.getElementById("kpiPresupuesto").textContent = formatoEuro(volPBL);
+      document.getElementById("kpiBajaMedia").textContent = `${bajaMedia.toFixed(1).replace(".", ",")}%`;
+      document.getElementById("kpiBajaRango").textContent = `Mín: ${bajaMin.toFixed(1)}% · Máx: ${bajaMax.toFixed(1)}%`;
+      document.getElementById("kpiLicitadores").textContent = mediaLic.toFixed(1).replace(".", ",");
+      document.getElementById("kpiAhorro").textContent = formatoEuro(ahorro > 0 ? ahorro : 0);
+    }
+
+    function actualizarGraficos(lista) {
+      // 1. Dispersión Licitadores vs Baja
+      const puntos = lista
+        .filter(x => x.licitadores > 0 && x.baja !== null && x.baja >= 0 && x.baja <= 65)
+        .slice(0, 200)
+        .map(x => ({
+          x: x.licitadores,
+          y: x.baja,
+          titulo: x.titulo.substring(0, 55) + "...",
+          ganador: x.adjudicatario || "Sin dato"
+        }));
+
+      if (chartDispersion) chartDispersion.destroy();
+      const ctx1 = document.getElementById("chartDispersion").getContext("2d");
+      chartDispersion = new Chart(ctx1, {
+        type: "scatter",
+        data: {
+          datasets: [{
+            label: "Concursos adjudicados",
+            data: puntos,
+            backgroundColor: "rgba(16, 185, 129, 0.65)",
+            borderColor: "#059669",
+            pointRadius: 5,
+            pointHoverRadius: 7
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  const p = ctx.raw;
+                  return [`${p.titulo}`, `Licitadores: ${p.x} | Baja: ${p.y}%`, `Ganador: ${p.ganador}`];
                 }
-            });
-            updateDashboard();
-        }
-
-        function getFilteredData() {
-            return tendersData.filter(item => {
-                if (currentFilters.territory !== "Todos" && item.territory !== currentFilters.territory) return false;
-                if (currentFilters.status !== "Todos" && item.status !== currentFilters.status) return false;
-                if (currentFilters.category !== "Todas" && item.category !== currentFilters.category) return false;
-                if (currentFilters.org !== "Todos" && item.org !== currentFilters.org) return false;
-                if (currentFilters.search) {
-                    const haystack = `${item.id} ${item.cpv} ${item.title} ${item.org} ${item.winner} ${item.territory}`.toLowerCase();
-                    if (!haystack.includes(currentFilters.search)) return false;
-                }
-                return true;
-            });
-        }
-
-        function sortTable(key) {
-            if (currentSort.key === key) {
-                currentSort.asc = !currentSort.asc;
-            } else {
-                currentSort.key = key;
-                currentSort.asc = true;
+              }
             }
-            updateDashboard();
+          },
+          scales: {
+            x: { title: { display: true, text: "Nº de Licitadores presentados" }, beginAtZero: true },
+            y: { title: { display: true, text: "% de Baja sobre PBL" }, beginAtZero: true }
+          }
         }
+      });
 
-        function updateDashboard() {
-            const filtered = getFilteredData();
+      // 2. Barras por Tipo de Servicio
+      const categorias = ["Redacción de Proyecto", "Dirección de Obra", "Urbanismo y Planeamiento", "Asistencia Técnica"];
+      const mediasBaja = categorias.map(cat => {
+        const sub = lista.filter(x => x.tipo === cat && x.baja !== null && x.baja >= 0);
+        return sub.length ? +(sub.reduce((a, b) => a + b.baja, 0) / sub.length).toFixed(1) : 0;
+      });
+      const mediasLic = categorias.map(cat => {
+        const sub = lista.filter(x => x.tipo === cat && x.licitadores > 0);
+        return sub.length ? +(sub.reduce((a, b) => a + b.licitadores, 0) / sub.length).toFixed(1) : 0;
+      });
 
-            // Ordenar datos
-            const sorted = [...filtered].sort((a, b) => {
-                let valA, valB;
-                if (currentSort.key === "discount") {
-                    valA = calcDiscount(a.pbl, a.awardAmount) ?? -1;
-                    valB = calcDiscount(b.pbl, b.awardAmount) ?? -1;
-                } else {
-                    valA = a[currentSort.key] ?? "";
-                    valB = b[currentSort.key] ?? "";
-                }
-                if (typeof valA === "string") {
-                    return currentSort.asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
-                }
-                return currentSort.asc ? valA - valB : valB - valA;
-            });
-
-            updateKPIs(filtered);
-            renderTable(sorted);
-            renderCharts(filtered);
+      if (chartTipos) chartTipos.destroy();
+      const ctx2 = document.getElementById("chartTipos").getContext("2d");
+      chartTipos = new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: ["Proyectos", "Dir. Obra", "Urbanismo", "Asist. Técnica"],
+          datasets: [
+            { label: "% Baja Media", data: mediasBaja, backgroundColor: "#6366f1", borderRadius: 6 },
+            { label: "Media Licitadores", data: mediasLic, backgroundColor: "#f59e0b", borderRadius: 6 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { beginAtZero: true } }
         }
+      });
+    }
 
-        function updateKPIs(data) {
-            // 1. PBL Total
-            const totalPbl = data.reduce((sum, item) => sum + item.pbl, 0);
-            document.getElementById("kpiPbl").textContent = formatCurrency(totalPbl);
-            document.getElementById("kpiCountSub").textContent = `${data.length} expedientes filtrados (sin IVA)`;
+    function renderizarTabla(lista) {
+      const tbody = document.getElementById("tablaBody");
+      if (!lista.length) {
+        tbody.innerHTML = `<tr><td colspan="8" class="py-10 text-center text-slate-400">No hay licitaciones que coincidan con los filtros seleccionados.</td></tr>`;
+        return;
+      }
 
-            // 2. Activas (En plazo)
-            const activeItems = data.filter(i => i.status === "En plazo");
-            const activePbl = activeItems.reduce((sum, i) => sum + i.pbl, 0);
-            document.getElementById("kpiActive").textContent = activeItems.length;
-            document.getElementById("kpiActivePbl").textContent = `${formatCurrency(activePbl)} en honorarios abiertos`;
+      tbody.innerHTML = lista.slice(0, 150).map(item => {
+        let badgeClass = "badge-adjudicada";
+        if (item.estado === "En plazo") badgeClass = "badge-abierta";
+        if (item.estado === "En evaluación") badgeClass = "badge-evaluacion";
 
-            // 3. Baja Media
-            const awarded = data.filter(i => i.status === "Adjudicada" && i.awardAmount);
-            if (awarded.length > 0) {
-                const discounts = awarded.map(i => calcDiscount(i.pbl, i.awardAmount));
-                const avgDisc = discounts.reduce((a, b) => a + b, 0) / discounts.length;
-                const minDisc = Math.min(...discounts);
-                const maxDisc = Math.max(...discounts);
-                document.getElementById("kpiAvgDiscount").textContent = `${avgDisc.toFixed(1).replace('.', ',')} %`;
-                document.getElementById("kpiDiscountRange").textContent = `Rango: ${minDisc.toFixed(1)}% a ${maxDisc.toFixed(1)}% (${awarded.length} adj.)`;
-            } else {
-                document.getElementById("kpiAvgDiscount").textContent = "— %";
-                document.getElementById("kpiDiscountRange").textContent = "Sin adjudicaciones en este filtro";
-            }
+        const bajaHtml = item.baja !== null && item.baja !== undefined
+          ? `<span class="font-semibold ${item.baja > 25 ? 'text-rose-600' : 'text-indigo-600'}">-${item.baja.toFixed(1)}%</span>`
+          : `<span class="text-slate-400">—</span>`;
 
-            // 4. Media Licitadores
-            const withBidders = data.filter(i => i.bidders !== null && i.bidders > 0);
-            if (withBidders.length > 0) {
-                const avgBidders = withBidders.reduce((s, i) => s + i.bidders, 0) / withBidders.length;
-                const maxBidders = Math.max(...withBidders.map(i => i.bidders));
-                document.getElementById("kpiAvgBidders").textContent = avgBidders.toFixed(1).replace('.', ',');
-                document.getElementById("kpiMaxBidders").textContent = `Máx. concurrencia: ${maxBidders} ofertas`;
-            } else {
-                document.getElementById("kpiAvgBidders").textContent = "—";
-                document.getElementById("kpiMaxBidders").textContent = "Pendiente de cierre de ofertas";
-            }
-        }
+        const licHtml = item.licitadores !== null && item.licitadores !== undefined
+          ? `<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">${item.licitadores}</span>`
+          : `<span class="text-slate-400">—</span>`;
 
-        function getCategoryBadge(cat) {
-            const styles = {
-                "Redacción de Proyecto": "bg-blue-50 text-blue-700 border-blue-200",
-                "Dirección de Obra": "bg-purple-50 text-purple-700 border-purple-200",
-                "Urbanismo / Planeamiento": "bg-amber-50 text-amber-800 border-amber-200",
-                "Asistencia Técnica": "bg-slate-100 text-slate-700 border-slate-300"
-            };
-            return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-[11px] font-semibold border ${styles[cat] || 'bg-slate-100 text-slate-700'}">${cat}</span>`;
-        }
+        return `
+          <tr class="hover:bg-slate-50 transition-colors">
+            <td class="py-3 px-4 whitespace-nowrap">
+              <div class="text-xs font-medium text-slate-700">${item.fecha || "Sin fecha"}</div>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${item.estado}</span>
+            </td>
+            <td class="py-3 px-4 max-w-md">
+              <a href="${item.enlace}" target="_blank" rel="noopener" class="font-medium text-slate-900 hover:text-emerald-600 line-clamp-2" title="${item.titulo}">
+                ${item.titulo}
+              </a>
+              <div class="text-xs text-slate-500 mt-0.5">${item.organismo} · <span class="text-slate-400">${item.territorio}</span></div>
+            </td>
+            <td class="py-3 px-4 whitespace-nowrap">
+              <span class="text-xs font-medium text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md">${item.tipo}</span>
+              <div class="text-[11px] text-slate-400 mt-0.5">CPV ${item.cpv}</div>
+            </td>
+            <td class="py-3 px-4 text-right whitespace-nowrap font-medium text-slate-800">${formatoEuro(item.pbl)}</td>
+            <td class="py-3 px-4 text-right whitespace-nowrap font-medium text-slate-700">${formatoEuro(item.adjudicacion)}</td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">${bajaHtml}</td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">${licHtml}</td>
+            <td class="py-3 px-4 max-w-xs">
+              <div class="text-xs font-medium text-slate-800 line-clamp-2">${item.adjudicatario || "Pendiente de adjudicación"}</div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
 
-        function getStatusBadge(status, deadline) {
-            if (status === "En plazo") {
-                return `<div>
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>En plazo
-                    </span>
-                    <span class="block text-[10px] text-emerald-700 font-medium mt-0.5">${deadline}</span>
-                </div>`;
-            }
-            if (status === "En evaluación") {
-                return `<div>
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
-                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>En evaluación
-                    </span>
-                    <span class="block text-[10px] text-slate-500 mt-0.5">${deadline}</span>
-                </div>`;
-            }
-            return `<div>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
-                    Adjudicada
-                </span>
-                <span class="block text-[10px] text-slate-400 mt-0.5">${deadline}</span>
-            </div>`;
-        }
+    // Eventos de filtros
+    ["filtroAnio", "filtroEstado", "filtroTipo", "filtroTerritorio", "ordenSelect"].forEach(id => {
+      document.getElementById(id).addEventListener("change", aplicarFiltros);
+    });
+    document.getElementById("buscador").addEventListener("input", aplicarFiltros);
+    document.getElementById("btnLimpiar").addEventListener("click", () => {
+      document.getElementById("buscador").value = "";
+      aplicarFiltros();
+    });
 
-        function getDiscountBadge(discount) {
-            if (discount === null) return `<span class="text-slate-400 font-mono text-xs">—</span>`;
-            let colorClass = "text-emerald-700 bg-emerald-50 border-emerald-200"; // Baja suave (<18%)
-            if (discount >= 25) {
-                colorClass = "text-rose-700 bg-rose-50 border-rose-200"; // Baja agresiva (>=25%)
-            } else if (discount >= 18) {
-                colorClass = "text-amber-700 bg-amber-50 border-amber-200"; // Baja media (18-24.9%)
-            }
-            return `<span class="inline-block px-2 py-0.5 rounded-md font-mono text-xs font-bold border ${colorClass}">-${discount.toFixed(1)}%</span>`;
-        }
-
-        function getBiddersPill(bidders) {
-            if (bidders === null) {
-                return `<span class="text-[11px] text-slate-400 italic">Abierto</span>`;
-            }
-            let barColor = "bg-blue-500";
-            if (bidders >= 12) barColor = "bg-rose-500";
-            else if (bidders >= 7) barColor = "bg-amber-500";
-            
-            const widthPct = Math.min(100, (bidders / 16) * 100);
-            return `<div class="flex flex-col items-center">
-                <span class="font-mono text-xs font-bold text-slate-800">${bidders} <span class="font-sans font-normal text-[11px] text-slate-500">ofertas</span></span>
-                <div class="w-14 h-1.5 bg-slate-100 rounded-full overflow-hidden mt-1">
-                    <div class="${barColor} h-full rounded-full" style="width: ${widthPct}%"></div>
-                </div>
-            </div>`;
-        }
-
-        function renderTable(data) {
-            const tbody = document.getElementById("tendersTableBody");
-            const emptyState = document.getElementById("emptyState");
-            document.getElementById("tableCount").textContent = data.length;
-
-            if (data.length === 0) {
-                tbody.innerHTML = "";
-                emptyState.classList.remove("hidden");
-                return;
-            }
-            emptyState.classList.add("hidden");
-
-            tbody.innerHTML = data.map(item => {
-                const discount = calcDiscount(item.pbl, item.awardAmount);
-                return `<tr class="hover:bg-blue-50/30 transition group">
-                    <td class="py-3.5 px-4 align-top whitespace-nowrap">
-                        <span class="font-mono text-xs font-bold text-slate-900 block">${item.id}</span>
-                        <span class="font-mono text-[10px] text-slate-400">CPV ${item.cpv}</span>
-                    </td>
-                    <td class="py-3.5 px-4 align-top max-w-xs">
-                        <p class="text-xs font-semibold text-slate-900 line-clamp-2 group-hover:text-blue-700 transition cursor-pointer" onclick="openDetailModal('${item.id}')">${item.title}</p>
-                        <div class="flex items-center gap-1.5 mt-1 text-[11px] text-slate-500">
-                            <span class="font-medium text-slate-700">${item.org}</span>
-                            <span>·</span>
-                            <span class="px-1.5 py-0.2 bg-slate-100 rounded text-slate-600 font-medium">${item.territory}</span>
-                        </div>
-                    </td>
-                    <td class="py-3.5 px-4 align-top whitespace-nowrap">
-                        ${getCategoryBadge(item.category)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top whitespace-nowrap">
-                        ${getStatusBadge(item.status, item.deadline)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top text-right font-mono text-xs font-semibold text-slate-800 whitespace-nowrap">
-                        ${formatCurrency(item.pbl)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top max-w-[180px]">
-                        <span class="text-xs ${item.status === 'Adjudicada' ? 'font-bold text-slate-900' : 'text-slate-400 italic'} line-clamp-2">
-                            ${item.winner}
-                        </span>
-                    </td>
-                    <td class="py-3.5 px-4 align-top text-right font-mono text-xs font-bold text-slate-900 whitespace-nowrap">
-                        ${formatCurrency(item.awardAmount)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top text-right whitespace-nowrap">
-                        ${getDiscountBadge(discount)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top text-center whitespace-nowrap">
-                        ${getBiddersPill(item.bidders)}
-                    </td>
-                    <td class="py-3.5 px-4 align-top text-right whitespace-nowrap">
-                        <button onclick="openDetailModal('${item.id}')" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-900 text-slate-700 hover:text-white text-xs font-semibold transition cursor-pointer">
-                            Ver ficha
-                        </button>
-                    </td>
-                </tr>`;
-            }).join("");
-        }
-
-        function renderCharts(data) {
-            // 1. Gráfico de Dispersión: Nº Licitadores vs % Baja
-            const scatterCtx = document.getElementById("scatterChart").getContext("2d");
-            const awardedWithBidders = data.filter(i => i.status === "Adjudicada" && i.bidders && i.awardAmount);
-
-            const scatterPoints = awardedWithBidders.map(i => ({
-                x: i.bidders,
-                y: Number(calcDiscount(i.pbl, i.awardAmount).toFixed(1)),
-                label: `${i.id} (${i.winner})`,
-                category: i.category
-            }));
-
-            if (scatterChartInstance) scatterChartInstance.destroy();
-            scatterChartInstance = new Chart(scatterCtx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Concursos Adjudicados',
-                        data: scatterPoints,
-                        backgroundColor: 'rgba(29, 78, 216, 0.8)',
-                        borderColor: '#1e3a8a',
-                        borderWidth: 1.5,
-                        pointRadius: 7,
-                        pointHoverRadius: 9
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#0f172a',
-                            padding: 10,
-                            cornerRadius: 8,
-                            callbacks: {
-                                label: (ctx) => {
-                                    const pt = ctx.raw;
-                                    return [
-                                        pt.label,
-                                        `Ofertas presentadas: ${pt.x}`,
-                                        `Baja adjudicación: -${pt.y}%`
-                                    ];
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            title: { display: true, text: 'Nº de Licitadores Presentados', font: { size: 11, weight: 'bold' }, color: '#64748b' },
-                            min: 0,
-                            suggestedMax: 18,
-                            grid: { color: '#f1f5f9' }
-                        },
-                        y: {
-                            title: { display: true, text: '% de Baja sobre PBL', font: { size: 11, weight: 'bold' }, color: '#64748b' },
-                            min: 0,
-                            suggestedMax: 40,
-                            grid: { color: '#f1f5f9' },
-                            ticks: { callback: (val) => val + '%' }
-                        }
-                    }
-                }
-            });
-
-            // 2. Gráfico de Barras Horizontales: Volumen PBL por Especialidad
-            const catCtx = document.getElementById("categoryChart").getContext("2d");
-            const categories = ["Redacción de Proyecto", "Dirección de Obra", "Urbanismo / Planeamiento", "Asistencia Técnica"];
-            const catTotals = categories.map(cat => {
-                return data.filter(i => i.category === cat).reduce((sum, i) => sum + i.pbl, 0);
-            });
-
-            if (categoryChartInstance) categoryChartInstance.destroy();
-            categoryChartInstance = new Chart(catCtx, {
-                type: 'bar',
-                data: {
-                    labels: ["Redacción Proyecto", "Dirección Obra", "Urbanismo / Plan.", "Asistencia Técnica"],
-                    datasets: [{
-                        label: 'Presupuesto Licitado (€)',
-                        data: catTotals,
-                        backgroundColor: ['#1d4ed8', '#7e22ce', '#d97706', '#475569'],
-                        borderRadius: 6,
-                        barThickness: 22
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#0f172a',
-                            padding: 10,
-                            cornerRadius: 8,
-                            callbacks: {
-                                label: (ctx) => ` Total PBL: ${formatCurrency(ctx.raw)}`
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: '#f1f5f9' },
-                            ticks: {
-                                font: { size: 10 },
-                                callback: (val) => (val / 1000) + 'k €'
-                            }
-                        },
-                        y: {
-                            grid: { display: false },
-                            ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Modales
-        function openDetailModal(id) {
-            const item = tendersData.find(t => t.id === id);
-            if (!item) return;
-
-            const discount = calcDiscount(item.pbl, item.awardAmount);
-            document.getElementById("modalExpId").textContent = item.id;
-            document.getElementById("modalCpv").textContent = `CPV ${item.cpv}`;
-            document.getElementById("modalTitle").textContent = item.title;
-            document.getElementById("modalOrg").textContent = item.org;
-            document.getElementById("modalTerritory").textContent = item.territory;
-            document.getElementById("modalStatus").textContent = `${item.status} (${item.deadline})`;
-            document.getElementById("modalPbl").textContent = formatCurrency(item.pbl);
-            document.getElementById("modalAward").textContent = formatCurrency(item.awardAmount);
-            document.getElementById("modalDiscount").textContent = discount !== null ? `-${discount.toFixed(2)}%` : "Pendiente";
-            document.getElementById("modalBidders").textContent = item.bidders ? `${item.bidders} ofertas` : "Abierto";
-            document.getElementById("modalWinner").textContent = item.winner;
-            document.getElementById("modalBiddersDetail").textContent = item.biddersDetail;
-            document.getElementById("modalNotes").textContent = item.notes;
-
-            document.getElementById("modalTechWeight").textContent = `${item.techWeight}%`;
-            document.getElementById("modalPriceWeight").textContent = `${item.priceWeight}%`;
-            document.getElementById("modalTechBar").style.width = `${item.techWeight}%`;
-            document.getElementById("modalPriceBar").style.width = `${item.priceWeight}%`;
-
-            document.getElementById("detailModal").classList.remove("hidden");
-        }
-
-        function closeDetailModal() {
-            document.getElementById("detailModal").classList.add("hidden");
-        }
-
-        function openImportModal() {
-            document.getElementById("importModal").classList.remove("hidden");
-        }
-
-        function closeImportModal() {
-            document.getElementById("importModal").classList.add("hidden");
-        }
-
-        function handleJsonUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const parsed = JSON.parse(e.target.result);
-                    if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].id && parsed[0].pbl) {
-                        tendersData = parsed;
-                        populateOrgFilter();
-                        resetFilters();
-                        const fb = document.getElementById("uploadFeedback");
-                        fb.textContent = `¡Correcto! Se han cargado ${parsed.length} licitaciones nuevas.`;
-                        fb.classList.remove("hidden", "text-rose-600");
-                        fb.classList.add("text-emerald-700");
-                    } else {
-                        throw new Error("Formato no válido");
-                    }
-                } catch (err) {
-                    const fb = document.getElementById("uploadFeedback");
-                    fb.textContent = "Error: El archivo JSON no tiene la estructura esperada.";
-                    fb.classList.remove("hidden", "text-emerald-700");
-                    fb.classList.add("text-rose-600");
-                }
-            };
-            reader.readAsText(file);
-        }
-    </script>
+    cargarDatos();
+  </script>
 </body>
 </html>

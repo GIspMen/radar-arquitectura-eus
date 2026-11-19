@@ -6,14 +6,12 @@ from datetime import datetime
 
 HEADERS = {
     "Accept": "application/json, application/xml, text/xml, */*",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/6.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/9.0"
 }
 
+# Prueba rápida con 2026 (~45 segundos) para validar estados y capturar muestra XML
 URLS_OPENDATA_EUSKADI = [
     "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2026/opendata/contratos.json",
-    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2025/opendata/contratos.json",
-    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2024/opendata/contratos.json",
-    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2023/opendata/contratos.json",
 ]
 
 RE_CPV = re.compile(r'\b(71[2345]\d{5})')
@@ -31,6 +29,18 @@ def limpiar(val):
     if isinstance(val, dict):
         val = val.get("es") or val.get("eu") or next(iter(val.values()), "")
     return " ".join(str(val).split())
+
+def parsear_fecha(raw):
+    s = limpiar(raw)
+    if not s:
+        return ""
+    m_f = re.search(r'(\d{4}-\d{2}-\d{2})', s)
+    if m_f:
+        return m_f.group(1)
+    m_eu = re.search(r'(\d{2})/(\d{2})/(\d{4})', s)
+    if m_eu:
+        return f"{m_eu.group(3)}-{m_eu.group(2)}-{m_eu.group(1)}"
+    return s[:10]
 
 def parsear_importe(val):
     if not val or isinstance(val, bool):
@@ -60,16 +70,45 @@ def clasificar_tipo(t):
 
 def detectar_territorio(geo, texto):
     g = (geo + " " + texto).lower()
-    if any(k in g for k in ("bizkaia", "vizcaya", "bilbao", "getxo", "barakaldo", "durango", "basauri", "leioa", "portugalete", "santurtzi", "gernika", "bermeo", "erandio", "galdakao", "sestao", "amorebieta", "mungia")):
+    if any(k in g for k in (
+        "bizkaia", "vizcaya", "bilbao", "getxo", "barakaldo", "durango", "basauri", "leioa",
+        "portugalete", "santurtzi", "gernika", "bermeo", "erandio", "galdakao", "sestao",
+        "amorebieta", "mungia", "berriz", "elorrio", "ermua", "abanto", "muskiz", "ortuella",
+        "trapagaran", "sopela", "plentzia", "gorliz", "bakio", "lekeitio", "ondarroa", "markina",
+        "arrigorriaga", "etxebarri", "derio", "zamudio", "sondika", "loiu", "güeñes", "zalla", "balmaseda"
+    )):
         return "Bizkaia"
-    if any(k in g for k in ("gipuzkoa", "guipúzcoa", "donostia", "san sebastián", "san sebastian", "irun", "errenteria", "eibar", "zarautz", "arrasate", "tolosa", "hernani", "bergara", "azpeitia", "lasarte", "pasaia", "hondarribia")):
+    if any(k in g for k in (
+        "gipuzkoa", "guipúzcoa", "donostia", "san sebastián", "san sebastian", "irun", "errenteria",
+        "eibar", "zarautz", "arrasate", "mondragón", "tolosa", "hernani", "bergara", "azpeitia",
+        "azkoitia", "lasarte", "pasaia", "hondarribia", "oñati", "elgoibar", "andoain", "beasain",
+        "ordizia", "zumarraga", "urretxu", "legazpi", "zumaia", "getaria", "orio", "mutriku", "deba",
+        "oiartzun", "lezo", "astigarraga", "usurbil", "villabona", "lazkao", "aretxabaleta", "eskoriatza"
+    )):
         return "Gipuzkoa"
-    if any(k in g for k in ("araba", "álava", "alava", "vitoria", "gasteiz", "llodio", "laudio", "amurrio", "salvatierra", "agurain")):
+    if any(k in g for k in (
+        "araba", "álava", "alava", "vitoria", "gasteiz", "llodio", "laudio", "amurrio",
+        "salvatierra", "agurain", "oyón", "oion", "laguardia", "iruña de oca", "alegria-dulantzi",
+        "zuia", "zigoitia", "legutio", "aramaio", "artziniega", "ayala", "aiara"
+    )):
         return "Álava"
     return "Euskadi (Autonómico)"
 
+def clasificar_estado_oficial(estado_raw, fecha_limite, hoy_str):
+    e = estado_raw.lower()
+    if any(k in e for k in ("desierto", "anulado", "desistimiento", "renuncia", "cancelad")):
+        return "Desierta / Anulada"
+    if any(k in e for k in ("plazo cerrado", "suspension", "suspensión", "recurso")):
+        return "En evaluación"
+    if any(k in e for k in ("adjudic", "formaliz", "finalizado", "histórico", "historico", "ejecución", "ejecucion", "modificación", "modificacion")):
+        return "Adjudicada"
+    if any(k in e for k in ("abierto", "plazo de presentación", "plazo de presentacion", "alerta temprana", "anuncio previo", "en redacción", "en redaccion")):
+        if fecha_limite and fecha_limite < hoy_str:
+            return "En evaluación"
+        return "En plazo"
+    return "En evaluación"
+
 def enriquecer_con_xml(exp):
-    """Lee el dataXML oficial de cada expediente de arquitectura para sacar importes, baja, ganador y licitadores."""
     xml_url = exp.pop("_xml", "")
     if not xml_url:
         return exp
@@ -84,12 +123,12 @@ def enriquecer_con_xml(exp):
         if m_cpv:
             exp["cpv"] = m_cpv.group(1)
 
-        # Presupuesto sin IVA
         for pat in (
             r'presupuestoSinIva[^>]*>([^<]+)<',
             r'valorEstimado[^>]*>([^<]+)<',
             r'TaxExclusiveAmount[^>]*>([^<]+)<',
-            r'presupuestoLicitacionSinIva[^>]*>([^<]+)<'
+            r'presupuestoLicitacionSinIva[^>]*>([^<]+)<',
+            r'presupuesto[^>]*>([^<]+)<'
         ):
             m = re.search(pat, xml_txt, re.IGNORECASE)
             if m:
@@ -98,29 +137,28 @@ def enriquecer_con_xml(exp):
                     exp["pbl"] = round(val, 2)
                     break
 
-        # Importe adjudicación sin IVA
         for pat in (
             r'importeAdjudicacionSinIva[^>]*>([^<]+)<',
             r'importeFormalizacionSinIva[^>]*>([^<]+)<',
             r'PayableAmount[^>]*>([^<]+)<',
-            r'importeAdjudicacion[^>]*>([^<]+)<'
+            r'importeAdjudicacion[^>]*>([^<]+)<',
+            r'importe[^>]*>([^<]+)<'
         ):
             m = re.search(pat, xml_txt, re.IGNORECASE)
             if m:
                 val = parsear_importe(m.group(1))
-                if val > 0:
+                if val > 0 and val != exp["pbl"]:
                     exp["adjudicacion"] = round(val, 2)
                     break
 
-        # Licitadores
-        m_lic = re.search(r'(?:numeroLicitadores|numLicitadores|ofertasRecibidas|ReceivedTenderQuantity)[^>]*>(\d+)<', xml_txt, re.IGNORECASE)
+        m_lic = re.search(r'(?:numeroLicitadores|numLicitadores|ofertasRecibidas|ReceivedTenderQuantity|licitadores)[^>]*>(\d+)<', xml_txt, re.IGNORECASE)
         if m_lic:
             exp["licitadores"] = int(m_lic.group(1))
 
-        # Adjudicatario
         for pat in (
             r'<adjudicatario[^>]*>([^<]+)<',
             r'<razonSocial[^>]*>([^<]+)<',
+            r'<nombre[^>]*>([^<]+)<',
             r'<WinningParty>.*?<Name[^>]*>([^<]+)<'
         ):
             m = re.search(pat, xml_txt, re.IGNORECASE | re.DOTALL)
@@ -131,11 +169,13 @@ def enriquecer_con_xml(exp):
         if exp["adjudicacion"] and exp["pbl"] >= exp["adjudicacion"] and exp["pbl"] > 0:
             exp["baja"] = round(((exp["pbl"] - exp["adjudicacion"]) / exp["pbl"]) * 100, 2)
             exp["estado"] = "Adjudicada"
+        elif exp["adjudicatario"] and exp["estado"] != "Desierta / Anulada":
+            exp["estado"] = "Adjudicada"
     except Exception:
         pass
     return exp
 
-def procesar_item(item, expedientes):
+def procesar_item(item, expedientes, hoy_str):
     titulo = limpiar(item.get("contratacion_objeto_contrato") or item.get("contratacion_titulo_contrato") or item.get("documentName"))
     if not titulo:
         return
@@ -154,22 +194,10 @@ def procesar_item(item, expedientes):
     organismo = limpiar(item.get("contratacion_poder_adjudicador_titulo") or item.get("contratacion_organo_contratacion") or item.get("institution")) or "Sector Público Vasco"
     geo = limpiar(item.get("contratacion_ambito_geografico") or "")
 
-    fecha_raw = limpiar(item.get("contratacion_fecha_de_publicacion_documento") or item.get("creationDate") or "")
-    m_f = re.search(r'(\d{4}-\d{2}-\d{2})', fecha_raw)
-    if m_f:
-        fecha = m_f.group(1)
-    else:
-        m_eu = re.search(r'(\d{2})/(\d{2})/(\d{4})', fecha_raw)
-        fecha = f"{m_eu.group(3)}-{m_eu.group(2)}-{m_eu.group(1)}" if m_eu else fecha_raw[:10]
-
-    est_raw = limpiar(item.get("contratacion_estado_tramitacion") or "").lower()
-    adj_txt = limpiar(item.get("contratacion_adjudicacion") or "")
-    if adj_txt or any(k in est_raw for k in ("adjudic", "formaliz", "resuelt")):
-        estado = "Adjudicada"
-    elif any(k in est_raw for k in ("plazo", "abiert", "anuncio", "licitaci", "publicad", "vigente")):
-        estado = "En plazo"
-    else:
-        estado = "En evaluación"
+    fecha = parsear_fecha(item.get("contratacion_fecha_de_publicacion_documento") or item.get("creationDate"))
+    fecha_limite = parsear_fecha(item.get("contratacion_fecha_limite_presentacion"))
+    est_raw = limpiar(item.get("contratacion_estado_tramitacion") or "")
+    estado = clasificar_estado_oficial(est_raw, fecha_limite, hoy_str)
 
     enlace = limpiar(item.get("friendlyUrl") or item.get("contratacion_poder_adjudicador_url") or "")
     if enlace.startswith("/"):
@@ -185,11 +213,13 @@ def procesar_item(item, expedientes):
         "tipo": clasificar_tipo(t_lower),
         "cpv": m_cpv.group(1) if m_cpv else "71200000",
         "estado": estado,
+        "estado_oficial": est_raw or estado,
         "fecha": fecha,
+        "fecha_limite": fecha_limite,
         "pbl": 0.0,
         "adjudicacion": None,
         "baja": None,
-        "adjudicatario": adj_txt if adj_txt and not adj_txt.startswith("http") else None,
+        "adjudicatario": None,
         "licitadores": None,
         "enlace": enlace,
         "_xml": limpiar(item.get("dataXML") or "")
@@ -197,6 +227,8 @@ def procesar_item(item, expedientes):
 
 def procesar():
     expedientes = {}
+    hoy_str = datetime.now().strftime("%Y-%m-%d")
+
     for url in URLS_OPENDATA_EUSKADI:
         try:
             print(f"Descargando: {url}", flush=True)
@@ -210,16 +242,26 @@ def procesar():
             print(f" -> {len(lista)} registros leídos", flush=True)
             for item in lista:
                 if isinstance(item, dict):
-                    procesar_item(item, expedientes)
+                    procesar_item(item, expedientes, hoy_str)
         except Exception as e:
             print(f" -> Error ({url}): {e}", flush=True)
 
     lista_bruta = sorted(expedientes.values(), key=lambda x: x["fecha"] or "", reverse=True)
-    print(f"Expedientes de arquitectura detectados: {len(lista_bruta)}. Enriqueciendo datos económicos...", flush=True)
+    print(f"Expedientes detectados: {len(lista_bruta)}", flush=True)
 
-    # Enriquecer en paralelo los 600 más recientes con su XML oficial (tarda ~15 segundos)
-    recientes = lista_bruta[:600]
-    resto = lista_bruta[600:]
+    # Imprimir muestra del primer XML adjudicado para verificar etiquetas exactas de dinero/ganador
+    for e in lista_bruta:
+        if e.get("_xml") and e["estado"] == "Adjudicada":
+            u = e["_xml"] if e["_xml"].startswith("http") else "https://opendata.euskadi.eus" + e["_xml"]
+            try:
+                txt = urllib.request.urlopen(urllib.request.Request(u, headers=HEADERS), timeout=12).read().decode("utf-8", errors="ignore")
+                print("MUESTRA XML ADJUDICADA:\n" + txt[:2200], flush=True)
+            except Exception as ex:
+                print("Error muestra XML:", ex, flush=True)
+            break
+
+    recientes = lista_bruta[:400]
+    resto = lista_bruta[400:]
     for r in resto:
         r.pop("_xml", None)
 
@@ -234,7 +276,7 @@ def procesar():
             "licitaciones": lista_final
         }, f, ensure_ascii=False, indent=2)
 
-    print(f"TOTAL FINAL GUARDADO: {len(lista_final)} expedientes de arquitectura.", flush=True)
+    print(f"TOTAL FINAL GUARDADO: {len(lista_final)} expedientes.", flush=True)
 
 if __name__ == "__main__":
     procesar()

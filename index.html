@@ -13,6 +13,7 @@
     .badge-abierta { background: #dcfce7; color: #166534; }
     .badge-evaluacion { background: #fef9c3; color: #854d0e; }
     .badge-adjudicada { background: #e0e7ff; color: #3730a3; }
+    .badge-desierta { background: #f1f5f9; color: #475569; }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
   </style>
@@ -62,8 +63,9 @@
           <select id="filtroEstado" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <option value="TODOS">Todos los estados</option>
             <option value="En plazo">🟢 En plazo (Abiertas)</option>
-            <option value="En evaluación">🟡 En evaluación</option>
-            <option value="Adjudicada">🔵 Adjudicadas</option>
+            <option value="En evaluación">🟡 Plazo cerrado / Evaluación</option>
+            <option value="Adjudicada">🔵 Adjudicadas / Formalizadas</option>
+            <option value="Desierta / Anulada">⚪ Desiertas / Anuladas</option>
           </select>
         </div>
 
@@ -208,14 +210,12 @@
     async function cargarDatos() {
       const badge = document.getElementById("estadoDatos");
       try {
-        // Añadimos parámetro de tiempo para evitar caché antigua del navegador
         const resp = await fetch("licitaciones.json?t=" + new Date().getTime());
         if (!resp.ok) throw new Error("No se encontró licitaciones.json");
         const json = await resp.json();
         datosGlobales = json.licitaciones || [];
         badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Actualizado: ${json.ultima_actualizacion} (${datosGlobales.length} exp.)`;
       } catch (err) {
-        console.warn("Cargando modo sin conexión o archivo aún no generado:", err);
         badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400"></span> Sin datos cargados aún`;
         datosGlobales = [];
       }
@@ -238,13 +238,12 @@
         if (tipo !== "TODOS" && item.tipo !== tipo) return false;
         if (territorio !== "TODOS" && item.territorio !== territorio) return false;
         if (texto) {
-          const bloque = `${item.titulo} ${item.organismo} ${item.adjudicatario || ""} ${item.id} ${item.cpv}`.toLowerCase();
+          const bloque = `${item.titulo} ${item.organismo} ${item.adjudicatario || ""} ${item.id} ${item.cpv} ${item.estado_oficial || ""}`.toLowerCase();
           if (!bloque.includes(texto)) return false;
         }
         return true;
       });
 
-      // Ordenación
       filtrados.sort((a, b) => {
         if (orden === "fecha_desc") return (b.fecha || "").localeCompare(a.fecha || "");
         if (orden === "pbl_desc") return (b.pbl || 0) - (a.pbl || 0);
@@ -284,7 +283,6 @@
     }
 
     function actualizarGraficos(lista) {
-      // 1. Dispersión Licitadores vs Baja
       const puntos = lista
         .filter(x => x.licitadores > 0 && x.baja !== null && x.baja >= 0 && x.baja <= 65)
         .slice(0, 200)
@@ -330,7 +328,6 @@
         }
       });
 
-      // 2. Barras por Tipo de Servicio
       const categorias = ["Redacción de Proyecto", "Dirección de Obra", "Urbanismo y Planeamiento", "Asistencia Técnica"];
       const mediasBaja = categorias.map(cat => {
         const sub = lista.filter(x => x.tipo === cat && x.baja !== null && x.baja >= 0);
@@ -371,6 +368,7 @@
         let badgeClass = "badge-adjudicada";
         if (item.estado === "En plazo") badgeClass = "badge-abierta";
         if (item.estado === "En evaluación") badgeClass = "badge-evaluacion";
+        if (item.estado === "Desierta / Anulada") badgeClass = "badge-desierta";
 
         const bajaHtml = item.baja !== null && item.baja !== undefined
           ? `<span class="font-semibold ${item.baja > 25 ? 'text-rose-600' : 'text-indigo-600'}">-${item.baja.toFixed(1)}%</span>`
@@ -384,7 +382,7 @@
           <tr class="hover:bg-slate-50 transition-colors">
             <td class="py-3 px-4 whitespace-nowrap">
               <div class="text-xs font-medium text-slate-700">${item.fecha || "Sin fecha"}</div>
-              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${item.estado}</span>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium ${badgeClass}">${item.estado_oficial || item.estado}</span>
             </td>
             <td class="py-3 px-4 max-w-md">
               <a href="${item.enlace}" target="_blank" rel="noopener" class="font-medium text-slate-900 hover:text-emerald-600 line-clamp-2" title="${item.titulo}">
@@ -408,7 +406,6 @@
       }).join("");
     }
 
-    // Eventos de filtros
     ["filtroAnio", "filtroEstado", "filtroTipo", "filtroTerritorio", "ordenSelect"].forEach(id => {
       document.getElementById(id).addEventListener("change", aplicarFiltros);
     });

@@ -6,7 +6,7 @@ from datetime import datetime
 
 HEADERS = {
     "Accept": "application/json, application/xml, text/xml, */*",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/10.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/11.0"
 }
 
 URLS_OPENDATA_EUSKADI = [
@@ -49,13 +49,27 @@ def parsear_importe(val):
         return 0.0
     if isinstance(val, (int, float)):
         return float(val)
-    s = re.sub(r'[^\d.,]', '', str(val))
+    s = re.sub(r'[^\d.,]', '', str(val)).strip()
     if not s:
         return 0.0
+    # Formato europeo con miles y decimales: 17.545,50 -> 17545.50
     if "," in s and "." in s:
-        s = s.replace(".", "").replace(",", ".")
+        if s.rfind(",") > s.rfind("."):
+            s = s.replace(".", "").replace(",", ".")
+        else:
+            s = s.replace(",", "")
     elif "," in s:
-        s = s.replace(",", ".")
+        # Solo coma: 17545,50 -> 17545.50 (salvo que tenga 3 dígitos detrás y sea >1000 sin decimales)
+        partes = s.split(",")
+        if len(partes) == 2 and len(partes[1]) == 3 and len(partes[0]) <= 3:
+            s = s.replace(",", "")
+        else:
+            s = s.replace(",", ".")
+    elif "." in s:
+        # En KontratazioA "17.545" o "1.250.000" usan punto como separador de miles
+        partes = s.split(".")
+        if len(partes) > 2 or (len(partes) == 2 and len(partes[1]) == 3):
+            s = s.replace(".", "")
     try:
         return float(s)
     except ValueError:
@@ -126,6 +140,21 @@ def extraer_tag_xml(xml_txt, etiquetas):
                 return val
     return ""
 
+def extraer_urls_xml_item(item):
+    urls = []
+    for k in ("dataXML", "contratacion_adjudicacion", "contratacion_formalizacion", "physicalUrl"):
+        raw = limpiar(item.get(k) or "")
+        if not raw:
+            continue
+        encontradas = re.findall(r'(?:https?://[^\s"\'<>]+|/[^\s"\'<>]+)\.xml', raw, re.IGNORECASE)
+        if encontradas:
+            for u in encontradas:
+                if u not in urls:
+                    urls.append(u)
+        elif k == "dataXML" and raw not in urls:
+            urls.append(raw)
+    return urls
+
 def enriquecer_con_xml(exp):
     xml_urls = exp.pop("_xmls", [])
     for xml_url in xml_urls:
@@ -146,7 +175,7 @@ def enriquecer_con_xml(exp):
             if nuts:
                 exp["territorio"] = detectar_territorio("", exp["territorio"], nuts)
 
-            # Presupuesto base (prioridad sin IVA; si solo hay con IVA, dividir por 1.21)
+            # Presupuesto base (sin IVA prioritario; si solo existe con IVA, dividir por 1.21)
             pbl_sin = parsear_importe(extraer_tag_xml(xml_txt, (
                 "budgetWithoutVAT", "estimatedValue", "presupuestoSinIva", "valorEstimado", "TaxExclusiveAmount"
             )))
@@ -159,30 +188,31 @@ def enriquecer_con_xml(exp):
 
             # Importe adjudicación / formalización
             adj_sin = parsear_importe(extraer_tag_xml(xml_txt, (
-                "awardAmountWithoutVAT", "formalizedAmountWithoutVAT",
+                "awardAmountWithoutVAT", "formalizedAmountWithoutVAT", "adjudicationAmountWithoutVAT",
                 "importeAdjudicacionSinIva", "importeFormalizacionSinIva", "PayableAmount"
             )))
             if adj_sin > 0:
                 exp["adjudicacion"] = round(adj_sin, 2)
             elif not exp["adjudicacion"]:
                 adj_con = parsear_importe(extraer_tag_xml(xml_txt, (
-                    "awardAmountWithVAT", "formalizedAmountWithVAT", "importeAdjudicacionConIva"
+                    "awardAmountWithVAT", "formalizedAmountWithVAT", "adjudicationAmountWithVAT",
+                    "importeAdjudicacionConIva", "awardAmount", "adjudicationAmount"
                 )))
                 if adj_con > 0:
                     exp["adjudicacion"] = round(adj_con / 1.21, 2)
 
-            # Licitadores
+            # Número de licitadores / ofertas recibidas
             lic_str = extraer_tag_xml(xml_txt, (
-                "numberOfTenders", "receivedTenders", "tenderersCount",
+                "numberOfTenders", "receivedTenders", "tenderersCount", "offersReceived",
                 "numeroLicitadores", "ofertasRecibidas", "ReceivedTenderQuantity"
             ))
             if lic_str and lic_str.isdigit() and int(lic_str) > 0:
                 exp["licitadores"] = int(lic_str)
 
-            # Empresa adjudicataria (dentro de bloques de adjudicación / ganador)
+            # Empresa adjudicataria
             for pat in (
-                r'<(?:awardee|winningBidder|winningParty|adjudicatario|contractor)[^>]*>.*?<(?:name|razonSocial|nombre)[^>]*>([^<]+)</',
-                r'<(?:awardeeName|adjudicatario|razonSocial)[^>]*>([^<]+)</'
+                r'<(?:awardee|winningBidder|winningParty|adjudicatario|contractor|successfulTenderer)[^>]*>.*?<(?:name|razonSocial|nombre|companyName)[^>]*>([^<]+)</',
+                r'<(?:awardeeName|adjudicatario|razonSocial|winningBidderName)[^>]*>([^<]+)</'
             ):
                 m_gan = re.search(pat, xml_txt, re.IGNORECASE | re.DOTALL)
                 if m_gan:
@@ -234,12 +264,13 @@ def procesar_item(item, expedientes, hoy_str):
     elif not enlace:
         enlace = "https://www.contratacion.euskadi.eus"
 
-    xml_url = limpiar(item.get("dataXML") or "")
+    xml_urls = extraer_urls_xml_item(item)
 
     if exp_id in expedientes:
         prev = expedientes[exp_id]
-        if xml_url and xml_url not in prev["_xmls"]:
-            prev["_xmls"].append(xml_url)
+        for u in xml_urls:
+            if u not in prev["_xmls"]:
+                prev["_xmls"].append(u)
         if fecha and fecha > (prev["fecha"] or ""):
             prev["fecha"] = fecha
             prev["estado"] = estado
@@ -263,7 +294,7 @@ def procesar_item(item, expedientes, hoy_str):
             "adjudicatario": None,
             "licitadores": None,
             "enlace": enlace,
-            "_xmls": [xml_url] if xml_url else []
+            "_xmls": xml_urls
         }
 
 def procesar():

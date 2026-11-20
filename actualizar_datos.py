@@ -2,17 +2,20 @@ import urllib.request
 import json
 import re
 import time
+import os
 import concurrent.futures
 from datetime import datetime
 
 HEADERS = {
     "Accept": "application/json, application/xml, text/xml, */*",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/14.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/15.0"
 }
 
-# Prueba rápida con 2026 (~2 min) con concurrencia suave (8 hilos) para que no bloquee Open Data Euskadi
 URLS_OPENDATA_EUSKADI = [
     "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2026/opendata/contratos.json",
+    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2025/opendata/contratos.json",
+    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2024/opendata/contratos.json",
+    "https://opendata.euskadi.eus/contenidos/ds_contrataciones/contrataciones_admin_2023/opendata/contratos.json",
 ]
 
 RE_CPV = re.compile(r'\b(71[2345]\d{5})')
@@ -23,6 +26,19 @@ PALABRAS_ARQ = (
     "plan general", "plan parcial", "plan especial", "estudio de detalle", "planeamiento",
     "servicios de arquitectura", "concurso de proyectos", "anteproyecto", "arquitect"
 )
+
+def descargar_con_reintentos(url, timeout=90, intentos=3):
+    for i in range(intentos):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.read().decode("utf-8", errors="ignore")
+        except Exception as e:
+            if i < intentos - 1:
+                time.sleep(2 * (i + 1))
+            else:
+                raise e
+    return ""
 
 def limpiar(val):
     if not val:
@@ -160,10 +176,8 @@ def enriquecer_con_xml(exp):
         if xml_url.startswith("/"):
             xml_url = "https://opendata.euskadi.eus" + xml_url
         try:
-            time.sleep(0.12)
-            req = urllib.request.Request(xml_url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                xml_txt = resp.read().decode("utf-8", errors="ignore")
+            time.sleep(0.1)
+            xml_txt = descargar_con_reintentos(xml_url, timeout=15, intentos=2)
 
             m_cpv = RE_CPV.search(xml_txt)
             if m_cpv:
@@ -300,9 +314,7 @@ def procesar():
     for url in URLS_OPENDATA_EUSKADI:
         try:
             print(f"Descargando: {url}", flush=True)
-            req = urllib.request.Request(url, headers=HEADERS)
-            with urllib.request.urlopen(req, timeout=90) as resp:
-                raw = resp.read().decode("utf-8", errors="ignore").strip()
+            raw = descargar_con_reintentos(url, timeout=120, intentos=3).strip()
             if not raw.startswith(("[", "{")):
                 raw = re.sub(r'^[a-zA-Z0-9_]+\((.*)\);?$', r'\1', raw, flags=re.DOTALL)
             data = json.loads(raw)
@@ -314,29 +326,33 @@ def procesar():
         except Exception as e:
             print(f" -> Error ({url}): {e}", flush=True)
 
+    if len(expedientes) == 0:
+        print("AVISO: Open Data Euskadi no devolvió registros en este intento. Se conservan los datos anteriores sin sobrescribir.", flush=True)
+        return
+
     lista_bruta = sorted(expedientes.values(), key=lambda x: x["fecha"] or "", reverse=True)
     print(f"Expedientes únicos detectados: {len(lista_bruta)}", flush=True)
 
-    # Buscar un concurso NO menor adjudicado y mostrar todas sus etiquetas con valor
+    # Imprimir etiquetas con valor de un concurso ordinario adjudicado
     for e in lista_bruta:
         if e["estado"] == "Adjudicada" and not e.get("_menor") and e.get("_xmls"):
             u = e["_xmls"][0]
             full_u = u if u.startswith("http") else "https://opendata.euskadi.eus" + u
             try:
-                txt = urllib.request.urlopen(urllib.request.Request(full_u, headers=HEADERS), timeout=15).read().decode("utf-8", errors="ignore")
+                txt = descargar_con_reintentos(full_u, timeout=15, intentos=2)
                 pares = re.findall(r'<([a-zA-Z0-9_:-]+)\b[^>]*>([^<]{1,120})</\1>', txt)
                 print(f"PARES XML CONCURSO ORDINARIO ({e['id']}): {pares}", flush=True)
             except Exception as ex:
                 print("Error muestra XML:", ex, flush=True)
             break
 
-    recientes = lista_bruta[:650]
-    resto = lista_bruta[650:]
+    recientes = lista_bruta[:800]
+    resto = lista_bruta[800:]
     for r in resto:
         r.pop("_xmls", None)
         r.pop("_menor", None)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         recientes_ok = list(executor.map(enriquecer_con_xml, recientes))
 
     lista_final = recientes_ok + resto

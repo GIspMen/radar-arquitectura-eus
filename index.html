@@ -46,7 +46,7 @@
 
     <!-- Panel de Filtros -->
     <section class="card p-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3">
         <div>
           <label class="block text-xs font-medium text-slate-500 mb-1">Año</label>
           <select id="filtroAnio" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
@@ -55,6 +55,15 @@
             <option value="2025">2025</option>
             <option value="2024">2024</option>
             <option value="2023">2023</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-slate-500 mb-1">Procedimiento</label>
+          <select id="filtroProcedimiento" class="w-full text-sm border border-slate-300 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="TODOS">Todos</option>
+            <option value="ORDINARIO">Concursos Ordinarios</option>
+            <option value="MENOR">Contratos Menores</option>
           </select>
         </div>
 
@@ -224,6 +233,7 @@
 
     function aplicarFiltros() {
       const anio = document.getElementById("filtroAnio").value;
+      const proc = document.getElementById("filtroProcedimiento").value;
       const estado = document.getElementById("filtroEstado").value;
       const tipo = document.getElementById("filtroTipo").value;
       const territorio = document.getElementById("filtroTerritorio").value;
@@ -234,6 +244,8 @@
 
       let filtrados = datosGlobales.filter(item => {
         if (anio !== "TODOS" && !(item.fecha || "").startsWith(anio)) return false;
+        if (proc === "ORDINARIO" && item.es_menor) return false;
+        if (proc === "MENOR" && !item.es_menor) return false;
         if (estado !== "TODOS" && item.estado !== estado) return false;
         if (tipo !== "TODOS" && item.tipo !== tipo) return false;
         if (territorio !== "TODOS" && item.territorio !== territorio) return false;
@@ -378,6 +390,10 @@
           ? `<span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">${item.licitadores}</span>`
           : `<span class="text-slate-400">—</span>`;
 
+        const tipoProcBadge = item.es_menor
+          ? `<span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">Menor</span>`
+          : `<span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700">Concurso</span>`;
+
         return `
           <tr class="hover:bg-slate-50 transition-colors">
             <td class="py-3 px-4 whitespace-nowrap">
@@ -388,7 +404,10 @@
               <a href="${item.enlace}" target="_blank" rel="noopener" class="font-medium text-slate-900 hover:text-emerald-600 line-clamp-2" title="${item.titulo}">
                 ${item.titulo}
               </a>
-              <div class="text-xs text-slate-500 mt-0.5">${item.organismo} · <span class="text-slate-400">${item.territorio}</span></div>
+              <div class="text-xs text-slate-500 mt-0.5 flex items-center gap-1.5 flex-wrap">
+                <span>${item.organismo} · <span class="text-slate-400">${item.territorio}</span></span>
+                ${tipoProcBadge}
+              </div>
             </td>
             <td class="py-3 px-4 whitespace-nowrap">
               <span class="text-xs font-medium text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md">${item.tipo}</span>
@@ -399,14 +418,14 @@
             <td class="py-3 px-4 text-center whitespace-nowrap">${bajaHtml}</td>
             <td class="py-3 px-4 text-center whitespace-nowrap">${licHtml}</td>
             <td class="py-3 px-4 max-w-xs">
-              <div class="text-xs font-medium text-slate-800 line-clamp-2">${item.adjudicatario || "Pendiente de adjudicación"}</div>
+              <div class="text-xs font-medium text-slate-800 line-clamp-2">${item.adjudicatario || "Pendiente / Sin publicar"}</div>
             </td>
           </tr>
         `;
       }).join("");
     }
 
-    ["filtroAnio", "filtroEstado", "filtroTipo", "filtroTerritorio", "ordenSelect"].forEach(id => {
+    ["filtroAnio", "filtroProcedimiento", "filtroEstado", "filtroTipo", "filtroTerritorio", "ordenSelect"].forEach(id => {
       document.getElementById(id).addEventListener("change", aplicarFiltros);
     });
     document.getElementById("buscador").addEventListener("input", aplicarFiltros);

@@ -7,7 +7,7 @@ from datetime import datetime
 
 HEADERS = {
     "Accept": "application/json, application/xml, text/xml, */*",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/16.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) RadarArquitecturaEuskadi/17.0"
 }
 
 URLS_OPENDATA_EUSKADI = [
@@ -26,7 +26,7 @@ PALABRAS_ARQ = (
     "servicios de arquitectura", "concurso de proyectos", "anteproyecto", "arquitect"
 )
 
-def descargar_con_reintentos(url, timeout=90, intentos=3):
+def descargar_con_reintentos(url, timeout=30, intentos=3):
     for i in range(intentos):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
@@ -34,7 +34,7 @@ def descargar_con_reintentos(url, timeout=90, intentos=3):
                 return resp.read().decode("utf-8", errors="ignore")
         except Exception as e:
             if i < intentos - 1:
-                time.sleep(2 * (i + 1))
+                time.sleep(1.5 * (i + 1))
             else:
                 raise e
     return ""
@@ -143,7 +143,6 @@ def clasificar_estado_oficial(estado_raw, fecha_limite, hoy_str):
     return "En evaluación"
 
 def extraer_tag_xml(xml_txt, etiquetas):
-    """Busca etiquetas XML ignorando prefijos de espacio de nombres como cbc: o cac:."""
     for tag in etiquetas:
         m = re.search(rf'<(?:[a-zA-Z0-9_]+:)?{tag}\b[^>]*>([^<]+)</(?:[a-zA-Z0-9_]+:)?{tag}>', xml_txt, re.IGNORECASE)
         if m:
@@ -152,24 +151,20 @@ def extraer_tag_xml(xml_txt, etiquetas):
                 return val
     return ""
 
-def extraer_metadata_map(xml_txt):
-    pares = re.findall(
-        r'<metaDataName[^>]*>([^<]+)</metaDataName>\s*<metaDataValue[^>]*>([^<]+)</metaDataValue>',
-        xml_txt,
-        re.IGNORECASE
-    )
-    return {limpiar(k).lower(): limpiar(v) for k, v in pares}
-
 def extraer_urls_xml_item(item):
     urls = []
-    for k in ("dataXML", "contratacion_adjudicacion", "contratacion_formalizacion", "physicalUrl", "metadataXML"):
+    # Solo dataXML y enlaces directos de adjudicación/formalización (evitamos metadataXML que duplica peticiones)
+    for k in ("dataXML", "contratacion_adjudicacion", "contratacion_formalizacion"):
         raw = limpiar(item.get(k) or "")
         if not raw:
             continue
         encontradas = re.findall(r'(?:https?://[^\s"\'<>]+|/[^\s"\'<>]+)\.xml', raw, re.IGNORECASE)
-        for u in encontradas:
-            if u not in urls:
-                urls.append(u)
+        if encontradas:
+            for u in encontradas:
+                if u not in urls:
+                    urls.append(u)
+        elif k == "dataXML" and raw.startswith(("http", "/")) and raw not in urls:
+            urls.append(raw)
     return urls
 
 def enriquecer_con_xml(exp):
@@ -180,87 +175,63 @@ def enriquecer_con_xml(exp):
         if xml_url.startswith("/"):
             xml_url = "https://opendata.euskadi.eus" + xml_url
         try:
-            time.sleep(0.08)
-            xml_txt = descargar_con_reintentos(xml_url, timeout=15, intentos=2)
-            meta = extraer_metadata_map(xml_txt) if "<metaDataName" in xml_txt else {}
+            time.sleep(0.15)
+            xml_txt = descargar_con_reintentos(xml_url, timeout=20, intentos=2)
 
             m_cpv = RE_CPV.search(xml_txt)
             if m_cpv:
                 exp["cpv"] = m_cpv.group(1)
 
-            nuts = extraer_tag_xml(xml_txt, ("nutsCode", "CountrySubentityCode")) or meta.get("nutscode", "")
+            nuts = extraer_tag_xml(xml_txt, ("nutsCode", "CountrySubentityCode"))
             if nuts:
                 exp["territorio"] = detectar_territorio("", exp["territorio"], nuts)
 
             # 1. Presupuesto base (KontratazioA + CODICE)
-            pbl_sin = parsear_importe(
-                extraer_tag_xml(xml_txt, (
-                    "budgetWithoutVAT", "TaxExclusiveAmount", "EstimatedOverallContractAmount",
-                    "estimatedValue", "presupuestoSinIva", "valorEstimado"
-                ))
-                or meta.get("budgetwithoutvat") or meta.get("estimatedvalue") or meta.get("presupuestosiniva") or ""
-            )
+            pbl_sin = parsear_importe(extraer_tag_xml(xml_txt, (
+                "budgetWithoutVAT", "TaxExclusiveAmount", "EstimatedOverallContractAmount",
+                "estimatedValue", "presupuestoSinIva", "valorEstimado"
+            )))
             if pbl_sin > 0:
                 exp["pbl"] = round(pbl_sin, 2)
             elif exp["pbl"] <= 0:
-                pbl_con = parsear_importe(
-                    extraer_tag_xml(xml_txt, ("budgetWithVAT", "TotalAmount", "presupuestoConIva"))
-                    or meta.get("budgetwithvat") or meta.get("presupuestoconiva") or ""
-                )
+                pbl_con = parsear_importe(extraer_tag_xml(xml_txt, ("budgetWithVAT", "TotalAmount", "presupuestoConIva")))
                 if pbl_con > 0:
                     exp["pbl"] = round(pbl_con / 1.21, 2)
 
-            # 2. Importe adjudicación / formalización (KontratazioA + CODICE TenderResult)
-            adj_sin = parsear_importe(
-                extraer_tag_xml(xml_txt, (
-                    "awardAmountWithoutVAT", "formalizedAmountWithoutVAT", "adjudicationAmountWithoutVAT",
-                    "PayableAmount", "amountWithoutVAT", "importeAdjudicacionSinIva", "importeFormalizacionSinIva"
-                ))
-                or meta.get("awardamountwithoutvat") or meta.get("formalizedamountwithoutvat")
-                or meta.get("adjudicationamountwithoutvat") or meta.get("importeadjudicacionsiniva") or ""
-            )
+            # 2. Importe adjudicación / formalización
+            adj_sin = parsear_importe(extraer_tag_xml(xml_txt, (
+                "awardAmountWithoutVAT", "formalizedAmountWithoutVAT", "adjudicationAmountWithoutVAT",
+                "PayableAmount", "amountWithoutVAT", "importeAdjudicacionSinIva", "importeFormalizacionSinIva"
+            )))
             if adj_sin > 0:
                 exp["adjudicacion"] = round(adj_sin, 2)
             elif not exp["adjudicacion"]:
-                adj_con = parsear_importe(
-                    extraer_tag_xml(xml_txt, (
-                        "awardAmountWithVAT", "formalizedAmountWithVAT", "adjudicationAmountWithVAT",
-                        "amountWithVAT", "importeAdjudicacionConIva", "awardAmount", "adjudicationAmount"
-                    ))
-                    or meta.get("awardamountwithvat") or meta.get("formalizedamountwithvat")
-                    or meta.get("adjudicationamountwithvat") or meta.get("awardamount") or ""
-                )
+                adj_con = parsear_importe(extraer_tag_xml(xml_txt, (
+                    "awardAmountWithVAT", "formalizedAmountWithVAT", "adjudicationAmountWithVAT",
+                    "amountWithVAT", "importeAdjudicacionConIva", "awardAmount", "adjudicationAmount"
+                )))
                 if adj_con > 0:
                     exp["adjudicacion"] = round(adj_con / 1.21, 2)
 
-            # 3. Número de licitadores (KontratazioA + CODICE ReceivedTenderQuantity)
-            lic_str = (
-                extraer_tag_xml(xml_txt, (
-                    "ReceivedTenderQuantity", "numberOfTenders", "receivedTenders", "tenderersCount",
-                    "offersReceived", "numTenderers", "numeroLicitadores", "ofertasRecibidas"
-                ))
-                or meta.get("numberoftenders") or meta.get("receivedtenders")
-                or meta.get("tendererscount") or meta.get("numerolicitadores") or ""
-            )
+            # 3. Número de licitadores
+            lic_str = extraer_tag_xml(xml_txt, (
+                "ReceivedTenderQuantity", "numberOfTenders", "receivedTenders", "tenderersCount",
+                "offersReceived", "numTenderers", "numeroLicitadores", "ofertasRecibidas"
+            ))
             if lic_str and lic_str.isdigit() and int(lic_str) > 0:
                 exp["licitadores"] = int(lic_str)
 
-            # 4. Empresa adjudicataria (KontratazioA + CODICE WinningParty)
-            gan = (
-                meta.get("awardee") or meta.get("awardeename") or meta.get("winningbidder")
-                or meta.get("adjudicatario") or meta.get("contractor") or ""
-            )
-            if not gan:
-                for pat in (
-                    r'<(?:[a-zA-Z0-9_]+:)?(?:WinningParty|awardee|winningBidder|adjudicatario|contractor|successfulTenderer|tenderer)[^>]*>.*?<(?:[a-zA-Z0-9_]+:)?(?:Name|razonSocial|nombre|companyName|socialName)[^>]*>([^<]+)</',
-                    r'<(?:[a-zA-Z0-9_]+:)?(?:awardeeName|adjudicatario|razonSocial|winningBidderName)[^>]*>([^<]+)</'
-                ):
-                    m_gan = re.search(pat, xml_txt, re.IGNORECASE | re.DOTALL)
-                    if m_gan:
-                        gan = limpiar(m_gan.group(1))
+            # 4. Empresa adjudicataria
+            for pat in (
+                r'<(?:[a-zA-Z0-9_]+:)?(?:WinningParty|awardee|winningBidder|adjudicatario|contractor|successfulTenderer|tenderer)[^>]*>.*?<(?:[a-zA-Z0-9_]+:)?(?:Name|razonSocial|nombre|companyName|socialName)[^>]*>([^<]+)</',
+                r'<(?:[a-zA-Z0-9_]+:)?(?:awardeeName|adjudicatario|razonSocial|winningBidderName)[^>]*>([^<]+)</'
+            ):
+                m_gan = re.search(pat, xml_txt, re.IGNORECASE | re.DOTALL)
+                if m_gan:
+                    gan = limpiar(m_gan.group(1))
+                    if gan and gan.lower() != exp["organismo"].lower():
+                        exp["adjudicatario"] = gan
                         break
-            if gan and gan.lower() != exp["organismo"].lower():
-                exp["adjudicatario"] = gan
 
         except Exception:
             pass
@@ -365,25 +336,22 @@ def procesar():
         print("AVISO: Open Data Euskadi no devolvió registros en este intento. Se conservan los datos anteriores.", flush=True)
         return
 
-    # Priorizar los concursos ordinarios adjudicados y los más recientes para el enriquecimiento XML
-    todos = list(expedientes.values())
-    prioritarios = sorted(
-        [e for e in todos if e.get("_xmls")],
-        key=lambda x: (not x["es_menor"] and x["estado"] == "Adjudicada", x["fecha"] or ""),
-        reverse=True
-    )
-    a_enriquecer = prioritarios[:1100]
-    ids_enriquecer = {id(e) for e in a_enriquecer}
-    resto = [e for e in todos if id(e) not in ids_enriquecer]
+    lista_bruta = sorted(expedientes.values(), key=lambda x: x["fecha"] or "", reverse=True)
+    recientes = lista_bruta[:900]
+    resto = lista_bruta[900:]
     for r in resto:
         r.pop("_xmls", None)
 
-    print(f"Expedientes únicos (2023-2026): {len(todos)}. Enriqueciendo {len(a_enriquecer)} prioritarios...", flush=True)
+    print(f"Expedientes únicos (2023-2026): {len(lista_bruta)}. Enriqueciendo los {len(recientes)} más recientes...", flush=True)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        enriquecidos_ok = list(executor.map(enriquecer_con_xml, a_enriquecer))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+        enriquecidos_ok = list(executor.map(enriquecer_con_xml, recientes))
 
-    lista_final = sorted(enriquecidos_ok + resto, key=lambda x: x["fecha"] or "", reverse=True)
+    lista_final = enriquecidos_ok + resto
+    con_pbl = sum(1 for x in lista_final if (x.get("pbl") or 0) > 0)
+    con_adj = sum(1 for x in lista_final if (x.get("adjudicacion") or 0) > 0)
+    print(f"Resumen XML: {con_pbl} expedientes con PBL > 0 | {con_adj} con adjudicación.", flush=True)
+
     with open("licitaciones.json", "w", encoding="utf-8") as f:
         json.dump({
             "ultima_actualizacion": datetime.now().strftime("%Y-%m-%d %H:%M"),

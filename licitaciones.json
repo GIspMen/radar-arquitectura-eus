@@ -1,6 +1,6 @@
 {
-  "ultima_actualizacion": "2026-11-25 17:51",
-  "total_registros": 3897,
+  "ultima_actualizacion": "2026-11-25 18:14",
+  "total_registros": 3849,
   "licitaciones": [
     {
       "id": "6359",
@@ -98,25 +98,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-instalacion-calefaccion-suelo-radiante-produccion-calor-mediante-bomba-calor-climatizacion-y-renovacion-aire-izarrazipe-ikastola-asi-como-direccion-facultativa-completa-dichas-obras/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "46-1-2/26",
-      "titulo": "Proyecto de ejecución para la obra de adecuación del museo a vestuarios",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71240000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-11-23",
-      "fecha_limite": "",
-      "pbl": 14700.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-ejecucion-obra-adecuacion-del-museo-vestuarios/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "01/2026 Armentia",
       "titulo": "Redacción del proyecto de ejecución, de dirección facultativa de las obras, y coordinación de seguridad y salud en las obras de ?Rehabilitación de la casa del embajador Juan Alonso de Gámiz?, en Armentia, Álava.",
       "organismo": "Junta Administrativa de Armentia",
@@ -134,25 +115,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-direccion-facultativa-obras-y-coordinacion-seguridad-y-salud-obras-rehabilitacion-casa-del-embajador-juan-alonso-gamiz-armentia-alava/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "KT-2026-00000493",
-      "titulo": "anteproyecto para la ubicación de un vestuario individual dentro del polideportivo municipal",
-      "organismo": "Ayuntamiento de Berriz",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-11-20",
-      "fecha_limite": "",
-      "pbl": 3867.5,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/anteproyecto-ubicacion-vestuario-individual-dentro-del-polideportivo-municipal/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2026-ESKA-001779-00",
@@ -402,25 +364,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/eliminacion-barreras-arquitectonicas-accesos-al-ambulatorio-markonzaga/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "KT-2026-00000486",
-      "titulo": "2 auriculares para pc (arquitecta y técnico economista)",
-      "organismo": "Ayuntamiento de Berriz",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-11-19",
-      "fecha_limite": "",
-      "pbl": 53.63,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/2-auriculares-pc-arquitecta-y-tecnico-economista/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "SE/09/26",
       "titulo": "Redacción del proyecto básico, proyecto de ejecución y dirección facultativa de las obras de rehabilitación de las fachadas y cubiertas del IES ZUMAIA BHI de Zumaia (Gipuzkoa)",
       "organismo": "Gobierno Vasco",
@@ -514,25 +457,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-reforma-del-cuerpo-guardia-ertzaintza-centro-penitenciario-bizkaia/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "46-1-1/26",
-      "titulo": "Estudio de viabilidad y proyecto básico para la obra de adecuación del actual museo en vestuarios",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71240000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-11-19",
-      "fecha_limite": "",
-      "pbl": 14650.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/estudio-viabilidad-y-proyecto-basico-obra-adecuacion-del-actual-museo-vestuarios/webkpe00-kpesimpc/es/"
     },
     {
       "id": "46-2-1/26",
@@ -970,25 +894,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-al-departamento-urbanismo-trabajos-arquitecto-ano-2026/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2026-ESKA-000267-00",
-      "titulo": "mini pc lenovo y 24\" monitor para el arquitecto. hp portatil para secretaría. altavoz para sala reuniones. renovación 8 lincencias esset home antivirus.",
-      "organismo": "Ayuntamiento de Mendaro",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-11-08",
-      "fecha_limite": "",
-      "pbl": 1797.23,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/mini-pc-lenovo-y-24-monitor-arquitecto-hp-portatil-secretaria-altavoz-sala-reuniones-renovacion-8-lincencias-esset-home-antivirus/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2026-575",
@@ -5209,25 +5114,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicios-redaccion-proyecto-mejora-del-enlace-n-i-445-y-conexion-n-i-a-15-sorabilla-4-nc-49-2026-at/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "PCTB2026008",
-      "titulo": "Redacción de proyectos y dirección facultativa de obras de complejo inmobiliario en la Parcela RZ-9",
-      "organismo": "Parque Científico y Tecnológico de Bizkaia, S.A.",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71240000",
-      "estado": "En evaluación",
-      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
-      "es_menor": false,
-      "fecha": "2026-08-20",
-      "fecha_limite": "2026-09-30",
-      "pbl": 2000000.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyectos-y-direccion-facultativa-obras-complejo-inmobiliario-parcela-rz-9/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2025SASI0008",
       "titulo": "Contratación del servicio de consultoría y asistencia técnica para la redacción del proyecto de ejecución, dirección de obra y coordinación de seguridad y salud de la reforma del campo de fútbol y pista de atletismo del estadio de Berazubi y nuevo edificio de gimnasios.",
       "organismo": "Ayuntamiento de Tolosa",
@@ -5456,7 +5342,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/el-objeto-del-contrato-es-ejecucion-primera-fase-del-proyecto-reforma-del-polideportivo-municipal-derio-que-aborda-vestibulo-acceso-y-espacios-adyacentes-fin-mejorar-su-funcionalidad-accesibilidad-eficiencia-energetica-e-imagen-arquitectonica-asi-como-ad/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "7335304917448361367",
+      "id": "3593190186597604516",
       "titulo": "Redaccion de proyecto y dirección de obra, instalaciones acuaticas Ipurua 2.",
       "organismo": "Ayuntamiento de Eibar",
       "territorio": "Gipuzkoa",
@@ -5682,25 +5568,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-instalacion-sistema-climatizacion-y-ventilacion-centro-menores-ibaiondo/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "8867364499466523661",
-      "titulo": "Redacción del proyecto básico, proyecto de ejecución y dirección facultativa de las obras de ejecución de un complejo inmobiliario compuesto de dos edificios en la parcela RZ-9 de Zorrotzaurre (Bilbao).",
-      "organismo": "Parque Científico y Tecnológico de Bizkaia, S.A.",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71240000",
-      "estado": "En evaluación",
-      "estado_oficial": "En evaluación",
-      "es_menor": false,
-      "fecha": "2026-07-27",
-      "fecha_limite": "",
-      "pbl": 2000000.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-basico-proyecto-ejecucion-y-direccion-facultativa-obras-ejecucion-complejo-inmobiliario-compuesto-dos-edificios-parcela-rz-9-zorrotzaurre-bilbao/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2026-ESKA-000383-00",
@@ -6064,25 +5931,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/enajenacion-onerosa-derechos-urbanisticos-correspondientes-al-ayuntamiento-area-ar-2-4-plan-especial-p-01-desarrollo-residencial-aldaztorre-anterior-uarc19-modificada/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2026PRIO0006",
-      "titulo": "La obra que se licita tiene por objeto la ejecución del \"Proyecto de reforma de las instalaciones deportivas del campo de fútbol de Zubipe\", consistente en la adecuación del edificio de vestuarios y graderíos junto al campo de fútbol, manteniendo el uso actual.El proyecto, redactado por el estudio de arquitectura y urbanismo VAUMM, ha sido firmado por Marta Alvarez, Jon Munitegiandikoetxea, Javier Ubillos e Iñigo Garcia.",
-      "organismo": "Ayuntamiento de Hernani",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Formalización del contrato",
-      "es_menor": false,
-      "fecha": "2026-07-17",
-      "fecha_limite": "2026-08-12",
-      "pbl": 894848.56,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/la-obra-que-se-licita-tiene-objeto-ejecucion-del-proyecto-reforma-instalaciones-deportivas-del-campo-futbol-zubipe-consistente-adecuacion-del-edificio-vestuarios-y-graderios-junto-al-campo-futbol-manteniendo-uso-actual-proyecto-redactado-estudio-arquitec/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "040P /2026",
       "titulo": "Redacción de Anteproyecto de edificio mixto equipamental (alojamientos dotacionales + usos terciarios) en las parcelas g.000.2.1 y g.000.2.2 del Barrio de Riberas de Loiola del área AM.05 en DONOSTIA",
       "organismo": "Gobierno Vasco",
@@ -6252,25 +6100,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-modificado-n-1-obras-construccion-19-viviendas-proteccion-social-calle-monte-eretza-n-10-bilbao-bizkaia/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "6/2026 MATERIAL LUMINARIA",
-      "titulo": "Cubrir la necesidad estructural de incorporar mobiliario como mejora al proyecto básico de mejora a la Pista de Padel",
-      "organismo": "Ayuntamiento de Lanciego",
-      "territorio": "Álava",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-07-14",
-      "fecha_limite": "",
-      "pbl": 3682.91,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/cubrir-necesidad-estructural-incorporar-mobiliario-como-mejora-al-proyecto-basico-mejora-pista-padel/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2026/04",
@@ -6670,25 +6499,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/anteproyecto-proyecto-instalacion-placas-solares-c-ibaiondo-0-polideportivo-municipal/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "453/2026",
-      "titulo": "Servicio de Dirección de Obra de la obra de vestuarios en las gradas del campo de fútbol",
-      "organismo": "Ayuntamiento de Orozko",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2026-07-01",
-      "fecha_limite": "",
-      "pbl": 14980.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-direccion-obra-obra-vestuarios-gradas-del-campo-futbol/webkpe00-kpesimpc/es/"
     },
     {
       "id": "454/2026",
@@ -7373,25 +7183,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proiektua-gauzatzea-eta-obra-zuzentzea-proyecto-ejecucion-y-direccion-obra/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2026OBRA0004",
-      "titulo": "Ejecución de las obras comprendidas en el Proyecto de ejecución de adecuación del espacio de Bar exterior del campo de futbol de Txerloia a aseo público y vestuarios y oficina para gestores y usuarios del campo de tenis",
-      "organismo": "Ayuntamiento de Azkoitia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Formalización del contrato",
-      "es_menor": false,
-      "fecha": "2026-06-15",
-      "fecha_limite": "2026-07-13",
-      "pbl": 113451.48,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-comprendidas-proyecto-ejecucion-adecuacion-del-espacio-bar-exterior-del-campo-futbol-txerloia-aseo-publico-y-vestuarios-y-oficina-gestores-y-usuarios-del-campo-tenis/expjaso720837/webkpe00-kpesimpc/es/"
     },
     {
       "id": "3727/2025",
@@ -10586,7 +10377,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-previstas-memoria-tecnica-del-proyecto-ejecucion-ikaslab-olamendi-lhi-legazpi/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "6102099717716447217",
+      "id": "5993994495095101677",
       "titulo": "Asistencia técnica planificación y dirección de obra Proyecto DVB-T2",
       "organismo": "ITELAZPI, S.A.",
       "territorio": "Euskadi (Autonómico)",
@@ -13892,7 +13683,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-del-proyecto-ejecucion-remodelacion-campo-futbol-herrera/expjaso681789/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3566830222498769638",
+      "id": "4870816792021329004",
       "titulo": "Proyecto de urbanización de Okendo Alde",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -13911,7 +13702,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-urbanizacion-okendo-alde/expapjaso679461/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3879874294818393716",
+      "id": "4041629049654252432",
       "titulo": "Redacción de la modificación del Plan General de Ordenación Urbana para el ámbito Cuarteles Loiola",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -14880,7 +14671,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-traduccion-del-castellano-al-euskera-serie-documentos-relativos-al-nuevo-plan-general-ordenacion-urbana-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3633779623212036779",
+      "id": "4438810126263436211",
       "titulo": "Asistencia técnica redacción de proyectos de Seguridad Vial y Mejora Red Foral Carreteras de Bizkaia",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -14899,7 +14690,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-redaccion-proyectos-seguridad-vial-y-mejora-red-foral-carreteras-bizkaia/expapjaso675355/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "8796745479155075329",
+      "id": "5947826234685299727",
       "titulo": "Asistencia técnica Elaboración documentos de Planeamiento II Red Foral Carreteras de Bizkaia 2026-28",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -14918,7 +14709,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-elaboracion-documentos-planeamiento-ii-red-foral-carreteras-bizkaia-2026-28/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "463079417364064072",
+      "id": "3225362375612511297",
       "titulo": "Asistencia técnica redacción de proyectos de construcción en la red foral de carreteras de Bizkaia.",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -17114,7 +16905,7 @@
       "es_menor": true,
       "fecha": "2025-12-27",
       "fecha_limite": "",
-      "pbl": 0.0,
+      "pbl": 1800.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17125,15 +16916,15 @@
       "id": "25MO-01",
       "titulo": "Redacción de proyecto, ejecución de obra y, operación y mantenimiento para la implantación del sistema de pago por uso de infraestructuras en la autopista AP-68 en el Territorio Histórico de Álava",
       "organismo": "ARABAT, Vías de Álava S.A.",
-      "territorio": "Gipuzkoa",
+      "territorio": "Álava",
       "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
+      "cpv": "71311210",
       "estado": "En evaluación",
       "estado_oficial": "MO",
       "es_menor": false,
       "fecha": "2025-12-25",
       "fecha_limite": "2026-02-26",
-      "pbl": 0.0,
+      "pbl": 42595581.69,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17146,13 +16937,13 @@
       "organismo": "AZPILUR EUSKADI, S.A.M.P.",
       "territorio": "Gipuzkoa",
       "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
+      "cpv": "71240000",
       "estado": "Adjudicada",
       "estado_oficial": "Formalización del contrato",
       "es_menor": false,
       "fecha": "2025-12-24",
       "fecha_limite": "2026-02-26",
-      "pbl": 0.0,
+      "pbl": 290000.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17163,7 +16954,7 @@
       "id": "B024-2025-00005",
       "titulo": "Contratación de arquitecto asesor-asesora",
       "organismo": "Ayuntamiento de Zeanuri",
-      "territorio": "Euskadi (Autonómico)",
+      "territorio": "Bizkaia",
       "tipo": "Redacción de Proyecto",
       "cpv": "71200000",
       "estado": "Adjudicada",
@@ -17171,7 +16962,7 @@
       "es_menor": false,
       "fecha": "2025-12-23",
       "fecha_limite": "2026-01-11",
-      "pbl": 0.0,
+      "pbl": 49400.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17184,13 +16975,13 @@
       "organismo": "Ayuntamiento de Lekeitio",
       "territorio": "Bizkaia",
       "tipo": "Urbanismo y Planeamiento",
-      "cpv": "71200000",
+      "cpv": "71240000",
       "estado": "Adjudicada",
       "estado_oficial": "Formalización del contrato",
       "es_menor": false,
       "fecha": "2025-12-23",
       "fecha_limite": "2026-01-07",
-      "pbl": 0.0,
+      "pbl": 28335.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17201,7 +16992,7 @@
       "id": "0325-EDA",
       "titulo": "La prestación comprende servicios de asistencia técnica en las instalaciones de BASQUE CULINARY CENTER FUNDAZIOA y de la FUNDACIÓN EDA WINE AND DRINKS CAMPUS (en adelante, las entidades contratantes), destinados a apoyar las distintas fases de los proyectos: elaboración de pliegos, revisión del proyecto básico y del de ejecución, así como el apoyo técnico durante el proceso de obra de los edificios que integrarán el ecosistema.",
       "organismo": "Fundacion EDA DRINKS AND WINE CAMPUS",
-      "territorio": "Euskadi (Autonómico)",
+      "territorio": "Álava",
       "tipo": "Asistencia Técnica",
       "cpv": "71200000",
       "estado": "Adjudicada",
@@ -17209,7 +17000,7 @@
       "es_menor": false,
       "fecha": "2025-12-23",
       "fecha_limite": "2026-01-08",
-      "pbl": 0.0,
+      "pbl": 220739.67,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17228,7 +17019,7 @@
       "es_menor": false,
       "fecha": "2025-12-22",
       "fecha_limite": "2026-01-23",
-      "pbl": 0.0,
+      "pbl": 619834.71,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17239,15 +17030,15 @@
       "id": "2025KONT0001",
       "titulo": "Redacción del Plan General de Ordenación Urbana del Ayuntamiento de Elduain y de los documentos relativos al procedimiento de Evaluación Ambiental Estratégica",
       "organismo": "Ayuntamiento de Elduain",
-      "territorio": "Euskadi (Autonómico)",
+      "territorio": "Gipuzkoa",
       "tipo": "Urbanismo y Planeamiento",
-      "cpv": "71200000",
+      "cpv": "71410000",
       "estado": "Adjudicada",
       "estado_oficial": "Formalización del contrato",
       "es_menor": false,
       "fecha": "2025-12-22",
       "fecha_limite": "2026-01-09",
-      "pbl": 0.0,
+      "pbl": 150000.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17266,7 +17057,7 @@
       "es_menor": true,
       "fecha": "2025-12-22",
       "fecha_limite": "",
-      "pbl": 0.0,
+      "pbl": 4900.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17285,7 +17076,7 @@
       "es_menor": false,
       "fecha": "2025-12-19",
       "fecha_limite": "2026-01-19",
-      "pbl": 0.0,
+      "pbl": 1860000.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17304,7 +17095,7 @@
       "es_menor": true,
       "fecha": "2025-12-19",
       "fecha_limite": "",
-      "pbl": 0.0,
+      "pbl": 14800.0,
       "adjudicacion": null,
       "baja": null,
       "adjudicatario": null,
@@ -17462,25 +17253,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-ejecucion-tratamiento-del-talud-malkorbe-sistemas-bioingenieria/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2024-ESKA-000203-00",
-      "titulo": "ordenador hp pro 400 g9 + windows 11 + monitor hp p27h de 27\" ( para arquitecto técnico)",
-      "organismo": "Ayuntamiento de Getaria",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-12-15",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ordenador-hp-pro-400-g9-+-windows-11-+-monitor-hp-p27h-27-arquitecto-tecnico/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2025-ESKA-000293-00",
@@ -17768,25 +17540,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contrato-administrativo-ejecucion-obra-urbanizacion-fase-iv-del-proyecto-urbanizacion-modificacion-del-pau-del-sector-18-erribera-aduna-mediante-procedimiento-abierto/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "C12035293",
-      "titulo": "estudio arquitectura vestuarios leioa",
-      "organismo": "Eusko Trenbideak Ferrocarriles Vascos, S.A.",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-12-03",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/estudio-arquitectura-vestuarios-leioa/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "DITES/011SV/2025",
       "titulo": "Dirección facultativa (dirección de obra y dirección de ejecución de obra), coordinación de Seguridad y Salud, y supervisión arqueológica de la ejecución del proyecto del nuevo centro de la Red Ekoetxea en Añana (Álava)",
       "organismo": "Gobierno Vasco",
@@ -18034,25 +17787,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-redaccion-proyecto-rehabilitacion-casa-consistorial-respaldiza-ayala/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2025OBRA0006",
-      "titulo": "Ejecución de las obras comprendidas en el Proyecto de ejecución de adecuación del espacio de bar exterior del campo de futbol de Txerloia a aseo público y vestuarios y oficina para gestores y usuarios del campo de tenis",
-      "organismo": "Ayuntamiento de Azkoitia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Histórico",
-      "es_menor": false,
-      "fecha": "2025-11-27",
-      "fecha_limite": "2025-12-23",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-comprendidas-proyecto-ejecucion-adecuacion-del-espacio-bar-exterior-del-campo-futbol-txerloia-aseo-publico-y-vestuarios-y-oficina-gestores-y-usuarios-del-campo-tenis/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "B025-2025-00011",
       "titulo": "Servicio asistencia tecnica y asesoramiento en materia de arquitectura, urbanismo y obras",
       "organismo": "Ayuntamiento de Zeberio",
@@ -18262,25 +17996,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-redaccion-del-proyecto-ejecucion-obra-del-parque-agua-zubiondo/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "SE/41/25",
-      "titulo": "Redacción del proyecto de ejecución y dirección facultativa de las obras de creación de gimnasio con vestuarios en IES Mungia BHI (Edificio San Pedro) de Mungia (Bizkaia)",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Formalización del contrato",
-      "es_menor": false,
-      "fecha": "2025-11-21",
-      "fecha_limite": "2025-12-11",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-y-direccion-facultativa-obras-creacion-gimnasio-vestuarios-ies-mungia-bhi-edificio-san-pedro-mungia-bizkaia/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "SE/28/25",
       "titulo": "Redacción del proyecto de ejecución y dirección facultativa de las obras de reforma de comedor en el CEIP Umandi ikastola HLHI de Vitoria-Gasteiz (Araba)",
       "organismo": "Gobierno Vasco",
@@ -18319,7 +18034,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-urbanizacion-del-proyecto-urbanizacion-del-subambito-2-salburua-2-fase-2-del-programa-actuacion-urbanizadora-del-plan-equipamiento-y-vivienda-pau-salburua-y-zabalgana-del-pgou-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "8872887053790287734",
+      "id": "4679159598644736411",
       "titulo": "PROYECTO BÁSICO, ACTIVIDAD EJECUCIÓN DIRECCIÓN OBRA EDIFICO ANEXO AL COMPLEJO PISCINAS",
       "organismo": "Ayuntamiento de Sopela",
       "territorio": "Bizkaia",
@@ -19400,25 +19115,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-y-coordinacion-seguridad-y-salud-del-proyecto-restauracion-ecologica-dos-parcelas-ladera-sur-sierra-muskiritzu/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "B019-2025-00012",
-      "titulo": "Proyecto de ejecución, dirección facultativa y coordinación de seguridad y salud del nuevo vestuario",
-      "organismo": "Ayuntamiento de Berriz",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": false,
-      "fecha": "2025-11-03",
-      "fecha_limite": "2025-11-19",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-ejecucion-direccion-facultativa-y-coordinacion-seguridad-y-salud-del-nuevo-vestuario/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2025/04",
@@ -20599,7 +20295,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-ejecucion-obra-parte-arquitecto-tecnico-o-aparejador-y-coordinacion-seguridad-y-salud-obra-8-viviendas-y-local-comercial-calle-nueva-dentro-21-23-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "9092771651777790164",
+      "id": "3675091891952542121",
       "titulo": "Redacción de proyecto básico para la construcción de un edificio que albergue una nueva bilbioteca y aulario",
       "organismo": "Ayuntamiento de Sopela",
       "territorio": "Bizkaia",
@@ -27724,25 +27420,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-asistencia-tecnica-y-direccion-obra-implantacion-sistemas-cobro-autopista-ap-68-territorio-historico-alava/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2025-ESKA-000088-00",
-      "titulo": "diseñar e implementar la arquitectura tic: configurar servidor de domino+ldap. introducir ordenadores en dominio. reajuste configuración firewall/red. puesta en marcha passbolt y glpi. planificar la gestión incidencias y el mantnto. del sistema, ...",
-      "organismo": "Ayuntamiento de Lezo",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-04-16",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/disenar-e-implementar-arquitectura-tic-configurar-servidor-domino+ldap-introducir-ordenadores-dominio-reajuste-configuracion-firewall-red-puesta-marcha-passbolt-y-glpi-planificar-gestion-incidencias-y-mantnto-del-sistema/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "PH20/25-1",
       "titulo": "Redacción del proyecto de ejecución de la habilitación para uso público del Palacio de Samaniego en Laguardia.",
       "organismo": "Diputación Foral de Álava",
@@ -27950,25 +27627,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-redaccion-del-proyecto-obras-construccion-edificio-dotacional-caracter-deportivo-y-direccion-obra-parcela-adyacente-escuela-lardizabal-aia/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "062025/03/B",
-      "titulo": "El objeto de este contrato es la adquisición del suministro para la dotación de mobiliario de oficina y servicio necesario para la habilitación de las diferentes áreas de servicio, técnicas y de gestión necesarias para el correcto funcionamiento de las instalaciones del espacio museístico EUSKAL MUSEOA de Bilbao, gestionado por BILBAO BIZKAIA MUSEOAK, tras la finalización de su rehabilitación integral arquitectónica y museográfica",
-      "organismo": "Bilbao Bizkaia Museoak, SL",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": false,
-      "fecha": "2025-04-14",
-      "fecha_limite": "2025-05-05",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/el-objeto-este-contrato-es-adquisicion-del-suministro-dotacion-mobiliario-oficina-y-servicio-necesario-habilitacion-diferentes-areas-servicio-tecnicas-y-gestion-necesarias-correcto-funcionamiento-instalaciones-del-espacio-museistico-euskal-museoa-bilbao/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2025788 - LA",
@@ -29472,25 +29130,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-demolicion-del-edificio-nuarbe-27/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2024-FAKT-006260-00",
-      "titulo": "anteproyecto para nuevos vestuarios en el campo de fútbol garmendipe",
-      "organismo": "Ayuntamiento de Azpeitia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-03-18",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/anteproyecto-nuevos-vestuarios-campo-futbol-garmendipe/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2024-FAKT-006268-00",
       "titulo": "obras de la escuela de música en soreasu. dirección de obra, 25% (arquitecto técnico)",
       "organismo": "Ayuntamiento de Azpeitia",
@@ -30306,25 +29945,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/estudio-acustico-del-plan-especial-marrutxipi-bei/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "AMBA/14/24",
-      "titulo": "?Redacción del proyecto y la dirección facultativa de las obras de adecuación a la normativa actual contra incendios de los edificios URRETA?I Y URRETA?II y renovación integral de los vestuarios de URRETA-II del CEIP URRETA de Galdakao (Bizkaia)\"",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Formalización del contrato",
-      "es_menor": false,
-      "fecha": "2025-03-12",
-      "fecha_limite": "2025-02-05",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-y-direccion-facultativa-obras-adecuacion-normativa-actual-incendios-edificios-urreta-i-y-urreta-ii-y-renovacion-integral-vestuarios-urreta-ii-del-ceip-urreta-galdakao-bizkaia/webkpe00-kpesimpc/es/"
     },
     {
       "id": "23/2023-2664R",
@@ -32227,25 +31847,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-plan-especial-suministro-combustibles-y-carburantes/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1457/2024",
-      "titulo": "Redacción de proyecto reforma de vestuarios del frontón",
-      "organismo": "Ayuntamiento de Berango",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-01-25",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-reforma-vestuarios-del-fronton/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "422-2028/24AZP",
       "titulo": "Dirección facultativa de ejecución de obras de reacondicionamiento de suministro de agua en la residencia de Txurdinagabarri en Bilbao.",
       "organismo": "AZPIEGITURAK, S.A.M.P.",
@@ -32871,25 +32472,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-rehabilitacion-del-antiguo-ayuntamiento/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "CM-2554-2024",
-      "titulo": "Servicio para la redacción del proyecto de ejecución para incrementar el número de vestuarios en la planta sótano del Polideportivo de Urreta",
-      "organismo": "Ayuntamiento de Galdakao",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2025-01-14",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-redaccion-del-proyecto-ejecucion-incrementar-numero-vestuarios-planta-sotano-del-polideportivo-urreta/webkpe00-kpesimpc/es/"
     },
     {
       "id": "CM-2794-2024",
@@ -34051,7 +33633,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-direccion-obra-del-derribo-del-pabellon-invernadero-direccion-general-osakidetza/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "8136429673705624347",
+      "id": "6744668830083220998",
       "titulo": "Análisis de alternativas y redacción de proyecto para la reparación del Polígono Industrial Goiain",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -34963,25 +34545,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-adaptacion-del-proyecto-urbanizacion-unidad-ejecucion-ue-be-1-objeto-impulsar-gestion-urbanistica/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1633/2024",
-      "titulo": "Servicio para la redacción del proyecto de la ejecución, dirección facultativa de obras y coordinación en materia de seguridad y salud de las obras de construcción de nuevos vestuarios en los campos de fútbol de Alegría-Dulantzi",
-      "organismo": "Ayuntamiento de Alegria-Dulantzi",
-      "territorio": "Álava",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
-      "es_menor": false,
-      "fecha": "2024-12-10",
-      "fecha_limite": "2024-12-26",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-redaccion-del-proyecto-ejecucion-direccion-facultativa-obras-y-coordinacion-materia-seguridad-y-salud-obras-construccion-nuevos-vestuarios-campos-futbol-alegria-dulantzi/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "DITES/006SV/2025",
       "titulo": "Dirección Facultativa de las obras de ejecución del proyecto de adecuación del entorno de la cantera Andrabide en el T.M. de Gautegiz-Arteaga (Bizkaia).",
       "organismo": "Gobierno Vasco",
@@ -35229,7 +34792,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-y-direccion-facultativa-proyecto-acera-bici-bi-4105/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "5460361188367208361",
+      "id": "4972568650470946563",
       "titulo": "Servicio redacción de proyecto de bidegorri en Eloisa Artaza",
       "organismo": "Ayuntamiento de Gorliz",
       "territorio": "Bizkaia",
@@ -35778,25 +35341,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicios-direccion-obra-ejecucion-del-proyecto-mejora-drenaje-y-actuacion-cabecera-emboquille-sur-del-tunel-zarimutz/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "Txikia 2024/45",
-      "titulo": "Dirección obra arquitecto vestuarios piscina",
-      "organismo": "Ayuntamiento de Olaberria",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-11-14",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-arquitecto-vestuarios-piscina/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2024/214",
@@ -36540,25 +36084,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-compatibilizacion-fase-escaleras-del-proyecto-urbanizacion-andonaegi/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2024-ESKA-000156-00",
-      "titulo": "redacción de proyecto de equipamiento y mobiliario del centro cultural luzuriaga",
-      "organismo": "Ayuntamiento de Pasaia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-10-31",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-equipamiento-y-mobiliario-del-centro-cultural-luzuriaga/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2024-ESKA-000327-00",
       "titulo": "dirección de obra y coordinación de seguridad y salud de la fase 2 de mejora de la accesibilidad en el entorno de meipi en donibane.",
       "organismo": "Ayuntamiento de Pasaia",
@@ -37279,25 +36804,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-equipo-multidisciplinar-realizacion-labores-asistencia-tecnica-redaccion-proyectos-obras-reforma-envolvente-del-edificio-facultad-ciencia-y-tecnologia-del-campus-bizkaia-del-area-leioa-erandio-upv-ehu/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "78/24",
-      "titulo": "Redacción de proyecto de nuevo edificio de vestuarios, sala polivalente, 3 pistas de pádel y almacén en el polideportivo de Artunduaga",
-      "organismo": "Ayuntamiento de Basauri",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "FI",
-      "es_menor": false,
-      "fecha": "2024-10-21",
-      "fecha_limite": "2024-11-06",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-nuevo-edificio-vestuarios-sala-polivalente-3-pistas-padel-y-almacen-polideportivo-artunduaga/webkpe00-kpesimpc/es/"
     },
     {
       "id": "CM24/0012",
@@ -39105,25 +38611,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-basico-consultas-previas-administracion-conexion-red-abastecimiento-dudagoitia-y-deposito-urumin/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "E0057/2024",
-      "titulo": "Revisión de proyecto de ejecución para la mejora de la accesibilidad, zona de atención a la ciudadania y vestuarios de la Ertzain-etxea de Renteria.",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-09-19",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/revision-proyecto-ejecucion-mejora-accesibilidad-zona-atencion-ciudadania-y-vestuarios-ertzain-etxea-renteria/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2024ZEHI0004",
       "titulo": "Dirección de obra de la rehabilitación de la chimenea de Kalerrota y la redacción del proyecto de fin de obra",
       "organismo": "Ayuntamiento de Urretxu",
@@ -40435,7 +39922,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-y-direccion-obra-reforma-primera-planta-haurreskola-barrundia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1745424075235130175",
+      "id": "1162232719453663783",
       "titulo": "Redacción del plan especial, programa de actuación urbanizadora, proyecto de reparcelación y proyecto de urbanización del área integrada AI 1 Boriñaur",
       "organismo": "Ayuntamiento de Amurrio",
       "territorio": "Álava",
@@ -40509,25 +39996,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-facultativa-y-coordinacion-materia-seguridad-y-salud-obras-varias-reforma-interior-ies-toki-alai-irun-gipuzkoa/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "B-008/23",
-      "titulo": "redacción de los trabajos complementarios a la memoria valorada y la dirección facultativa de las obras de reforma de vestuarios en el CIFP EMILIO CAMPUZANO LHII en BILBAO (BIZKAIA).",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-07-31",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-trabajos-complementarios-memoria-valorada-y-direccion-facultativa-obras-reforma-vestuarios-cifp-emilio-campuzano-lhii-bilbao-bizkaia/webkpe00-kpesimpc/es/"
     },
     {
       "id": "B-032/21DIR",
@@ -40777,25 +40245,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicios-direccion-obra-ejecucion-del-proyecto-constructivo-adecuacion-conexion-del-ramal-salida-ap-1-130-s-rotonda-epele-fase-1/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "B903-2024-00002",
-      "titulo": "Servicio de dirección de obra, dirección de ejecución y coordinación de seguridad y salud de las obras de reforma y adecuación de un gimnasio y vestuario en el edificio del frontón de Zabaloetxe de Loiu",
-      "organismo": "Ayuntamiento de Loiu",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": false,
-      "fecha": "2024-07-23",
-      "fecha_limite": "2024-09-06",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-direccion-obra-direccion-ejecucion-y-coordinacion-seguridad-y-salud-obras-reforma-y-adecuacion-gimnasio-y-vestuario-edificio-del-fronton-zabaloetxe-loiu/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "KO3000-002432/2023",
       "titulo": "Dirección de obra de las obras de instalación de un aseo autolimpiable en el bidegorri eibar-elgoibar",
       "organismo": "Ayuntamiento de Eibar",
@@ -40889,25 +40338,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-redaccion-proyectos-y-direccion-obras-reforma-cubierta-del-centro-carlos-santamaria-donostia-upv-ehu-del-campus-gipuzkoa/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "01/2024-O",
-      "titulo": "Obras para la dotación e instalación de mobiliario, sistema de ventilación, calefacción y adecuación exterior del antiguo pabellón de automotores en la vía verde del vasco-navarro en Antoñana, de conformidad con el proyecto de ejecución de obras",
-      "organismo": "Cuadrilla de Montaña Alavesa",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
-      "es_menor": false,
-      "fecha": "2024-07-22",
-      "fecha_limite": "2024-08-08",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-dotacion-e-instalacion-mobiliario-sistema-ventilacion-calefaccion-y-adecuacion-exterior-del-antiguo-pabellon-automotores-via-verde-del-vasco-navarro-antonana-conformidad-proyecto-ejecucion-obras/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2024PGOU07",
@@ -43057,25 +42487,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ies-minas-barakaldo-reforma-san-jorge-direccion-facultativa/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "B-032/20DIR",
-      "titulo": "IES KANTAURI, Santurtzi - vestuarios - dirección facultativa",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-06-14",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ies-kantauri-santurtzi-vestuarios-direccion-facultativa/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2024COPS0007",
       "titulo": "Servicio de arquitectura e ingeniería para los trabajos de redacción de proyecto y dirección de obra. recuperación de la Estación del Urola como equipamiento social",
       "organismo": "Ayuntamiento de Zumarraga",
@@ -44615,25 +44026,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-basico-y-ejecucion-obras-rehabilitacion-antiguas-escuelas-carral/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "FAD/2024000174",
-      "titulo": "Dirección facultativa de la obra de los vestuarios de los campos de bolue",
-      "organismo": "Getxo Kirolak",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-05-13",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-facultativa-obra-vestuarios-campos-bolue/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2024/22-SA-LI",
       "titulo": "Obras del Proyecto de urbanización de la Vaguada de Eitzaga en Zumarraga (fase I).",
       "organismo": "Diputación Foral de Gipuzkoa",
@@ -45221,25 +44613,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-dividir-pabellon-industrial-mugitegi-y-acometer-obras-adecuacion-sus-correspondientes-usos-y-redaccion-del-proyecto-actividad-cada-parte-resultante-uso-cultural-y-almacen-municipal/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2024-00117/4",
-      "titulo": "Memoria y proyecto de ejecucion de reforma de vestuarios de fronton",
-      "organismo": "Ayuntamiento de Gautegiz Arteaga",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2024-04-26",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/memoria-y-proyecto-ejecucion-reforma-vestuarios-fronton/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2024-00117/24",
@@ -46002,7 +45375,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-direccion-y-ejecucion-obra-implantacion-sistema-geointercambio-su-puesta-servicio-optimizacion-y-su-mantenimiento-edificio-sede-servicios-centrales-lanbide-servicio-vasco-empleo-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2827889859951939998",
+      "id": "6798667645919580994",
       "titulo": "Dirección de obra del Proyecto de Urbanización del ámbito Urbanístico LO-01Ciudad Jardín de Loiola",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -46249,7 +45622,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-infraestructuras-recarga-electricas-centros-del-departamento-seguridad-dentro-del-marco-del-plan-recuperacion-transformacion-y-resiliencia-financiado-union-europe-nextgenerationeu/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3034115171015558665",
+      "id": "8259452188737693093",
       "titulo": "Plan General Revisión",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -47731,7 +47104,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-ejecucion-direccion-facultativa-y-coordinacion-seguridad-y-salud-rehabilitacion-envolvente-termica-del-edificio-maternoinfantil-del-hospital-donostia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "4484085095162649801",
+      "id": "7051446258918728358",
       "titulo": "Redacción del Plan Especial de Ordenación Urbana. 400 VPP. Área Playa de vías Amara-Easo. Donostia.",
       "organismo": "Gobierno Vasco",
       "territorio": "Gipuzkoa",
@@ -47748,25 +47121,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-plan-especial-ordenacion-urbana-400-vpp-area-playa-vias-amara-easo-donostia/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2023-CAD-13",
-      "titulo": "Obra de eliminación de barreras arquitectónicas y adecuación de aseos y vestuario en el edificio 2 de la Eskola de Derio",
-      "organismo": "Ayuntamiento de Derio",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": false,
-      "fecha": "2024-02-27",
-      "fecha_limite": "2024-03-27",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obra-eliminacion-barreras-arquitectonicas-y-adecuacion-aseos-y-vestuario-edificio-2-eskola-derio/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2024/01 ZERBITZUAK GOIKO-OSTATU",
@@ -50351,25 +49705,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-obra-regeneracion-pavimento-pike-bidea/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2023-0023",
-      "titulo": "Dirección de obra para la obra de reforma de los vestuarios del campo de fútbol de Basozabal",
-      "organismo": "Ayuntamiento de Sondika",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-12-29",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-obra-reforma-vestuarios-del-campo-futbol-basozabal/webkpe00-kpesimpc/es/"
     },
     {
       "id": "271/2023",
@@ -52975,25 +52310,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contrato-servicio-asesoramiento-urbanistico-y-arquitectonico-ayuntamiento-mes-julio-2023/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2023-06/SERV",
-      "titulo": "Contratación de los servicios de redacción del Proyecto Básico y de Ejecución y Dirección Facultativa de las obras de ampliación del edificio IIS Biogipuzkoa, asi como el descriptivo del mobiliario de los nuevos espacios proyectados",
-      "organismo": "Asociación Instituto de Investigación Sanitaria Biogipuzkoa",
-      "territorio": "Gipuzkoa",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Formalización del contrato",
-      "es_menor": false,
-      "fecha": "2023-10-25",
-      "fecha_limite": "2023-09-18",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-servicios-redaccion-del-proyecto-basico-y-ejecucion-y-direccion-facultativa-obras-ampliacion-del-edificio-iis-biogipuzkoa-asi-como-descriptivo-del-mobiliario-nuevos-espacios-proyectados/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "E0078/2023",
       "titulo": "Dirección de obra de reforma de la planta baja de la comisaria de Tolosa.",
       "organismo": "Gobierno Vasco",
@@ -54286,25 +53602,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/revit-arquitectura-ii-ikastaroaren-matrikula/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "Txikia 2023/20",
-      "titulo": "Redaccion anteproyecto vestuarios instalaciones deportivas",
-      "organismo": "Ayuntamiento de Olaberria",
-      "territorio": "Euskadi (Autonómico)",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-10-03",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-anteproyecto-vestuarios-instalaciones-deportivas/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "Txikia 2023/22",
       "titulo": "Dirección obra plaza junto al passivhause arquitecto",
       "organismo": "Ayuntamiento de Olaberria",
@@ -54626,25 +53923,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-ejecucion-del-proyecto-acceso-parcela-e3-del-plan-parcial-sector-15-salburua/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "FAD/2023000319",
-      "titulo": "Anteproyecto ampliación vestuarios campos bolue",
-      "organismo": "Getxo Kirolak",
-      "territorio": "Bizkaia",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-09-21",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/anteproyecto-ampliacion-vestuarios-campos-bolue/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2023SASI0009",
@@ -55139,25 +54417,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-instalaciones-servicios-sociales-areeta-romo-monte-gorbea-10/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2023-ESKA-000286-00",
-      "titulo": "dirección de obra de adaptación de los vestuarios",
-      "organismo": "Kabia (Organismo Autónomo de la Diputación Foral De Gipuzkoa)",
-      "territorio": "Gipuzkoa",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-09-13",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-adaptacion-vestuarios/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2023-ESKA-000287-00",
@@ -59834,7 +59093,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-ejecucion-direccion-facultativa-y-coordinacion-seguridad-y-salud-del-nuevo-centro-salud-loiola/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1510443012855314195",
+      "id": "3390248882292072292",
       "titulo": "REDACCIÓN DEL PROYECTO DE REFORMA DEL GARBIGUNE DE AZKOITIA Y LA DIRECCIÓN DE OBRA",
       "organismo": "Mancomunidad de Urola Erdia",
       "territorio": "Gipuzkoa",
@@ -60364,25 +59623,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/arreglar-tres-toldos-del-patio-uztaro-haurreskola/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2022-ESKA-000305-00",
-      "titulo": "dirección de obra y coordinación de seguridad de las obras recogidas en el proyecto de reforma de 4 vestuarios del polideportivo municipal.",
-      "organismo": "Ayuntamiento de Azpeitia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-05-03",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/maqueta-del-espacio-expositivo-azpeitia/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2022-ESKA-000839-00",
@@ -61466,25 +60706,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-y-ebss-reforma-y-habilitacion-como-centro-salud-mental-del-local-calle-iparaguirre-n-11-barakaldo-rsmb-os50-exposakisap2023001055/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2023KO170003",
-      "titulo": "Servicios de asistencia técnica para la redacción del proyecto de ejecución, de dirección de obra y de coordinación de la seguridad y salud del frontón cubierto, vestuarios y urbanización del entorno a su alrededor en el área ALT4 de Oiartzun.",
-      "organismo": "Ayuntamiento de Oiartzun",
-      "territorio": "Gipuzkoa",
-      "tipo": "Urbanismo y Planeamiento",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "MO",
-      "es_menor": false,
-      "fecha": "2023-04-18",
-      "fecha_limite": "2023-05-03",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicios-asistencia-tecnica-redaccion-del-proyecto-ejecucion-direccion-obra-y-coordinacion-seguridad-y-salud-del-fronton-cubierto-vestuarios-y-urbanizacion-del-entorno-su-alrededor-area-alt4-oiartzun/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2023-ESKA-000565-00",
@@ -62646,25 +61867,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-direccion-obra-mejora-accesibilidad-universal-mediante-movilidad-vertical-y-pasarela-c/arene/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "GET/2022002195",
-      "titulo": "Asistencia técnica direccion de obra y dirección ejecucion de ampliación edificio para vestuarios en el cam larrañazubi",
-      "organismo": "Ayuntamiento de Getxo",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-03-26",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-direccion-obra-y-direccion-ejecucion-ampliacion-edificio-vestuarios-cam-larranazubi/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "GET/2022002196",
       "titulo": "Asistencia técnica para la dirección de obra correspondiente a la ejecución de guardería de vehículos del servicio munic",
       "organismo": "Ayuntamiento de Getxo",
@@ -62779,25 +61981,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/cifp-bidasoa-irun-ventanas-y-urbanizacion-direccion-facultativa/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2023KO170002",
-      "titulo": "Contratación de la asistencia técnica, dirección de obra y coordinador de seguridad y salud para la redacción del proyecto de ejecución del nuevo frontón cubierto, vestuarios y urbanización del área ALT4 de Oiartzun.",
-      "organismo": "Ayuntamiento de Oiartzun",
-      "territorio": "Gipuzkoa",
-      "tipo": "Urbanismo y Planeamiento",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "DS",
-      "es_menor": false,
-      "fecha": "2023-03-24",
-      "fecha_limite": "2023-04-11",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-asistencia-tecnica-direccion-obra-y-coordinador-seguridad-y-salud-redaccion-del-proyecto-ejecucion-del-nuevo-fronton-cubierto-vestuarios-y-urbanizacion-del-area-alt4-oiartzun/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2023/26",
       "titulo": "Obras del Proyecto de ejecución para la reforma y ampliación del centro residencial San José de Azkoitia.",
       "organismo": "Diputación Foral de Gipuzkoa",
@@ -62817,7 +62000,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-del-proyecto-ejecucion-reforma-y-ampliacion-del-centro-residencial-san-jose-azkoitia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1437195156352265365",
+      "id": "1967080991903354977",
       "titulo": "Obras correspondientes al proyecto de ejecución de Villa Salia",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -62855,7 +62038,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/patrocinio-actividades-colaboracion-instituto-arquitectura-euskadi-talleres-y-actividades-didacticas-2023/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "781427360986489961",
+      "id": "388902738825562087",
       "titulo": "Proyecto de urbanización de la plaza Jesús María Alkain",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -62874,7 +62057,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-urbanizacion-plaza-jesus-maria-alkain/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "421783083495165670",
+      "id": "955959874917313718",
       "titulo": "Revisión del Plan General",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -63518,25 +62701,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ies-koldo-mitxelena-errenteria-danos-y-accesibilidad-direccion-facultativa/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2023-03/SERV",
-      "titulo": "Contratación de los servicios para la redacción del Proyecto Básico y de Ejecución, Dirección de Obra y Dirección de Ejecución, aprobación del Plan de Seguridad y Salud y Coordinación de Seguridad y Salud de la obra de ampliación del edificio del IIS Biodonostia así como el descriptivo del mobiliario de los nuevos espacios proyectados.",
-      "organismo": "Asociación Instituto Biodonostia",
-      "territorio": "Gipuzkoa",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "DS",
-      "es_menor": false,
-      "fecha": "2023-03-03",
-      "fecha_limite": "2023-03-24",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-servicios-redaccion-del-proyecto-basico-y-ejecucion-direccion-obra-y-direccion-ejecucion-aprobacion-del-plan-seguridad-y-salud-y-coordinacion-seguridad-y-salud-obra-ampliacion-del-edificio-del-iis-biodonostia-asi-como-descriptivo-del-mobilia/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2023IK200007",
@@ -64565,7 +63729,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/la-rehabilitacion-del-antiguo-mercado-abastos-amurrio-acuerdo-al-proyecto-obras-rehabilitacion-del-edificio-foru-kalea-9-como-centro-sociocultural-redactado-arzanegi-arquitectura-s-l-p-direccion-servicios-tecnicos-municipales/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "7308520708835385100",
+      "id": "4045759327122930306",
       "titulo": "Redacción de anteproyecto de \"Rehabilitación de los edificios existentes en la parcela catastral 383 del Polígono 1 de Berantevilla\"",
       "organismo": "Ayuntamiento de Berantevilla",
       "territorio": "Euskadi (Autonómico)",
@@ -64793,25 +63957,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-adecuacion-instalacion-electrica-direccion-general-osakidetza-lote-3/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "E0024/2023",
-      "titulo": "Dirección de obra y coordinación de seguridad y salud de la obra de adecuación de vestuario femenino en la planta semisótano en la Ertzain-etxea de Laudio",
-      "organismo": "Gobierno Vasco",
-      "territorio": "Álava",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-02-09",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-obra-y-coordinacion-seguridad-y-salud-obra-adecuacion-vestuario-femenino-planta-semisotano-ertzain-etxea-laudio/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "2022/S02.03.00.07/79",
       "titulo": "Asistencia técnica para redación anteproyecto y de los estudios previos de rehabilitación energética y accesibilidad del barrio de Goikolarra 1-16, vinculada a la rehabilitación urbana del barrio, subvecionada por el Gobierno Vasco",
       "organismo": "Ayuntamiento de Amurrio",
@@ -64924,25 +64069,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/consultoria-tecnica-anteproyectos-2-instalacion-estructura-solar-fotovoltaica-ser-ubicadas-vinedos/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "2022-ESKA-000024-00",
-      "titulo": "redacción de proyecto y dirección obra de vestuarios para brigada municipal",
-      "organismo": "Ayuntamiento de Zumarraga",
-      "territorio": "Gipuzkoa",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
-      "es_menor": true,
-      "fecha": "2023-02-06",
-      "fecha_limite": "",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-y-direccion-obra-vestuarios-brigada-municipal/webkpe00-kpesimpc/es/"
     },
     {
       "id": "2022-ESKA-000147-00",
@@ -65477,7 +64603,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/diseno-redaccion-proyecto-y-construccion-pumptrack-calles-butroi-y-larrabarri-municipio-derio/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3440008867243827430",
+      "id": "4650772773347476062",
       "titulo": "Redacción del informe del diagnóstico del estado de la red de saneamiento del Polígono Industrial Goiain, municipio de Legutio y del proyecto básico de reparación.",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -65496,7 +64622,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-informe-diagnostico-del-estado-red-saneamiento-del-poligono-industrial-goiain-municipio-legutio-y-del-proyecto-basico-reparacion/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "6522507037555197537",
+      "id": "2948537286073474245",
       "titulo": "Redacción del proyecto constructivo de pretratamiento y decantador primario de la depuradora existente y del proyecto básico de la nueva depuradora en el Polígono Industrial Goiain, municipio de Legutio.",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -70512,7 +69638,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-direccion-obra-reurbanizacion-calle-santa-elena/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "440391737663366466",
+      "id": "105905496900037943",
       "titulo": "Contratación de servicios de dirección de obra de instalaciones de televisión digital",
       "organismo": "ITELAZPI, S.A.",
       "territorio": "Euskadi (Autonómico)",
@@ -70740,25 +69866,6 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-y-proyecto-actividad-asi-como-direccion-facultativa-obras-objeto-habilitar-como-centro-dia-destinado-personas-mayores-local-calle-tepeyac-11-zalla-bizkaia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "B903-2021-00011",
-      "titulo": "Contrato del servicio de dirección de obra, dirección de ejecución y coordinación en materia de seguridad y salud de las obras de reforma y adecuación de un gimnasio y vestuario en el eedificio del frontón de Zabaloetxe",
-      "organismo": "Ayuntamiento de Loiu",
-      "territorio": "Bizkaia",
-      "tipo": "Dirección de Obra",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
-      "es_menor": false,
-      "fecha": "2021-11-29",
-      "fecha_limite": "2021-12-15",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contrato-del-servicio-direccion-obra-direccion-ejecucion-y-coordinacion-materia-seguridad-y-salud-obras-reforma-y-adecuacion-gimnasio-y-vestuario-eedificio-del-fronton-zabaloetxe/webkpe00-kpesimpc/es/"
-    },
-    {
       "id": "A09/21-O/PE",
       "titulo": "Ejecución de las obras correspondientes al proyecto de obras denominado ?Proyecto de ejecución del Centro de Movilidad Inteligente y Sostenible MUBIL en Eskuzaitzeta?, de fecha septiembre de 2021, redactado por IDOM Consulting, Engineering, Architecture SAU.",
       "organismo": "Diputación Foral de Gipuzkoa",
@@ -70947,25 +70054,6 @@
       "adjudicatario": null,
       "licitadores": null,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-redaccion-modificacion-del-proyecto-urbanizacion-u-e-130-02-arangoiti-bilbao-fase-2-2-remate-final-urbanizacion/webkpe00-kpesimpc/es/"
-    },
-    {
-      "id": "293/2021",
-      "titulo": "Obra de rehabilitación del edificio de Bengolarra, consistente en la ampliación de vestuarios, la reforma del bar-restaurante de las piscinas, la construcción de dos salas polivalentes y la eliminación de barreras arquitectónicas. Financiado por el Programa de Impulso a la Rehabilitación de los Edificios Públicos para las Entidades Locales (PIREP local) diseñado en el marco del Plan de Recuperación, Transfornación y Resiliencia (PRTR) financiado por la Unión Europa-Next GenerationEU",
-      "organismo": "Ayuntamiento de Zigoitia",
-      "territorio": "Álava",
-      "tipo": "Redacción de Proyecto",
-      "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "MO",
-      "es_menor": false,
-      "fecha": "2021-10-27",
-      "fecha_limite": "2021-12-20",
-      "pbl": 0.0,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
-      "licitadores": null,
-      "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obra-rehabilitacion-del-edificio-bengolarra-consistente-ampliacion-vestuarios-reforma-del-bar-restaurante-piscinas-construccion-dos-salas-polivalentes-y-eliminacion-barreras-arquitectonicas-acuerdo-proyecto-ejecucion-y-aplicando-medidas-proteccion-ambien/webkpe00-kpesimpc/es/"
     },
     {
       "id": "CO/48/21",

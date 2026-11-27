@@ -1,5 +1,5 @@
 {
-  "ultima_actualizacion": "2026-11-26 07:26",
+  "ultima_actualizacion": "2026-11-27 07:24",
   "total_registros": 3849,
   "licitaciones": [
     {
@@ -827,7 +827,7 @@
       "tipo": "Dirección de Obra",
       "cpv": "71240000",
       "estado": "En evaluación",
-      "estado_oficial": "Abierto / Plazo de presentación",
+      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-11-10",
       "fecha_limite": "2026-11-25",
@@ -846,7 +846,7 @@
       "tipo": "Urbanismo y Planeamiento",
       "cpv": "71240000",
       "estado": "En evaluación",
-      "estado_oficial": "Abierto / Plazo de presentación",
+      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-11-09",
       "fecha_limite": "2026-11-25",
@@ -865,7 +865,7 @@
       "tipo": "Urbanismo y Planeamiento",
       "cpv": "71240000",
       "estado": "En evaluación",
-      "estado_oficial": "Abierto / Plazo de presentación",
+      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-11-09",
       "fecha_limite": "2026-11-25",
@@ -1815,7 +1815,7 @@
       "tipo": "Redacción de Proyecto",
       "cpv": "71200000",
       "estado": "En evaluación",
-      "estado_oficial": "Abierto / Plazo de presentación",
+      "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-11-02",
       "fecha_limite": "2026-11-25",
@@ -4455,8 +4455,8 @@
       "territorio": "Gipuzkoa",
       "tipo": "Redacción de Proyecto",
       "cpv": "71200000",
-      "estado": "En evaluación",
-      "estado_oficial": "DS",
+      "estado": "Adjudicada",
+      "estado_oficial": "Histórico",
       "es_menor": false,
       "fecha": "2026-09-13",
       "fecha_limite": "2026-10-13",
@@ -5342,7 +5342,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/el-objeto-del-contrato-es-ejecucion-primera-fase-del-proyecto-reforma-del-polideportivo-municipal-derio-que-aborda-vestibulo-acceso-y-espacios-adyacentes-fin-mejorar-su-funcionalidad-accesibilidad-eficiencia-energetica-e-imagen-arquitectonica-asi-como-ad/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "6682209726280553130",
+      "id": "4073757943436059597",
       "titulo": "Redaccion de proyecto y dirección de obra, instalaciones acuaticas Ipurua 2.",
       "organismo": "Ayuntamiento de Eibar",
       "territorio": "Gipuzkoa",
@@ -5653,7 +5653,7 @@
       "tipo": "Urbanismo y Planeamiento",
       "cpv": "71200000",
       "estado": "Adjudicada",
-      "estado_oficial": "Adjudicación provisional / definitiva",
+      "estado_oficial": "Formalización del contrato",
       "es_menor": false,
       "fecha": "2026-07-27",
       "fecha_limite": "2026-09-14",
@@ -8084,15 +8084,15 @@
       "territorio": "Bizkaia",
       "tipo": "Redacción de Proyecto",
       "cpv": "71240000",
-      "estado": "En evaluación",
+      "estado": "Adjudicada",
       "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-05-25",
       "fecha_limite": "2026-06-09",
       "pbl": 43142.13,
-      "adjudicacion": null,
-      "baja": null,
-      "adjudicatario": null,
+      "adjudicacion": 29500.0,
+      "baja": 31.62,
+      "adjudicatario": "A-GATEIN INGENIERIA S.L.P.",
       "licitadores": 9,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-intervencion-mejora-y-activacion-del-entorno-del-parque-urkullu-barakaldo/webkpe00-kpesimpc/es/"
     },
@@ -9680,15 +9680,15 @@
       "territorio": "Bizkaia",
       "tipo": "Dirección de Obra",
       "cpv": "71311300",
-      "estado": "En evaluación",
+      "estado": "Adjudicada",
       "estado_oficial": "Anuncio en estudio / Plazo cerrado",
       "es_menor": false,
       "fecha": "2026-04-23",
       "fecha_limite": "2026-05-25",
       "pbl": 350000.0,
-      "adjudicacion": null,
+      "adjudicacion": 1050000.0,
       "baja": null,
-      "adjudicatario": null,
+      "adjudicatario": "GONZALEZ CAVIA Y CABRERA-ARQUITECTURA, URBANISMO Y PAISAJE S.L. / IP DE LA PUERTA ARQUITECTURA Y URBANISMO, SOCIEDAD LIMITADA / ETXARRI ARQUITECTURA, S.L.",
       "licitadores": 15,
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/acuerdo-marco-prestacion-servicios-redaccion-proyectos-y-direccion-facultativa-obras-promovidas-area-educacion/expjaso707038/webkpe00-kpesimpc/es/"
     },
@@ -10377,7 +10377,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-previstas-memoria-tecnica-del-proyecto-ejecucion-ikaslab-olamendi-lhi-legazpi/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "8280439151809144570",
+      "id": "2938613607081697075",
       "titulo": "Asistencia técnica planificación y dirección de obra Proyecto DVB-T2",
       "organismo": "ITELAZPI, S.A.",
       "territorio": "Euskadi (Autonómico)",
@@ -13683,7 +13683,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-del-proyecto-ejecucion-remodelacion-campo-futbol-herrera/expjaso681789/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "7071497709750915100",
+      "id": "8386066274190807443",
       "titulo": "Proyecto de urbanización de Okendo Alde",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -13702,7 +13702,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-urbanizacion-okendo-alde/expapjaso679461/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "500982556535214837",
+      "id": "4176639704932900114",
       "titulo": "Redacción de la modificación del Plan General de Ordenación Urbana para el ámbito Cuarteles Loiola",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -14671,7 +14671,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-traduccion-del-castellano-al-euskera-serie-documentos-relativos-al-nuevo-plan-general-ordenacion-urbana-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "4621557194864682675",
+      "id": "5504326837686044594",
       "titulo": "Asistencia técnica redacción de proyectos de Seguridad Vial y Mejora Red Foral Carreteras de Bizkaia",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -14690,7 +14690,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-redaccion-proyectos-seguridad-vial-y-mejora-red-foral-carreteras-bizkaia/expapjaso675355/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "9127006456141882220",
+      "id": "5243038766550100708",
       "titulo": "Asistencia técnica Elaboración documentos de Planeamiento II Red Foral Carreteras de Bizkaia 2026-28",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -14709,7 +14709,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/asistencia-tecnica-elaboracion-documentos-planeamiento-ii-red-foral-carreteras-bizkaia-2026-28/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2650510421983454077",
+      "id": "8182671052070858187",
       "titulo": "Asistencia técnica redacción de proyectos de construcción en la red foral de carreteras de Bizkaia.",
       "organismo": "Diputación Foral de Bizkaia",
       "territorio": "Bizkaia",
@@ -18034,7 +18034,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/ejecucion-obras-urbanizacion-del-proyecto-urbanizacion-del-subambito-2-salburua-2-fase-2-del-programa-actuacion-urbanizadora-del-plan-equipamiento-y-vivienda-pau-salburua-y-zabalgana-del-pgou-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "6767873981041040862",
+      "id": "175503879874403368",
       "titulo": "PROYECTO BÁSICO, ACTIVIDAD EJECUCIÓN DIRECCIÓN OBRA EDIFICO ANEXO AL COMPLEJO PISCINAS",
       "organismo": "Ayuntamiento de Sopela",
       "territorio": "Bizkaia",
@@ -20295,7 +20295,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/direccion-ejecucion-obra-parte-arquitecto-tecnico-o-aparejador-y-coordinacion-seguridad-y-salud-obra-8-viviendas-y-local-comercial-calle-nueva-dentro-21-23-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "9185981278492996007",
+      "id": "8943791334220891392",
       "titulo": "Redacción de proyecto básico para la construcción de un edificio que albergue una nueva bilbioteca y aulario",
       "organismo": "Ayuntamiento de Sopela",
       "territorio": "Bizkaia",
@@ -33633,7 +33633,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/contratacion-direccion-obra-del-derribo-del-pabellon-invernadero-direccion-general-osakidetza/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "960464053481768944",
+      "id": "1691531453205776625",
       "titulo": "Análisis de alternativas y redacción de proyecto para la reparación del Polígono Industrial Goiain",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -34792,7 +34792,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-y-direccion-facultativa-proyecto-acera-bici-bi-4105/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "7614138397863550362",
+      "id": "8582738897119678574",
       "titulo": "Servicio redacción de proyecto de bidegorri en Eloisa Artaza",
       "organismo": "Ayuntamiento de Gorliz",
       "territorio": "Bizkaia",
@@ -39922,7 +39922,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-y-direccion-obra-reforma-primera-planta-haurreskola-barrundia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "6730698431615093761",
+      "id": "7013794795744799380",
       "titulo": "Redacción del plan especial, programa de actuación urbanizadora, proyecto de reparcelación y proyecto de urbanización del área integrada AI 1 Boriñaur",
       "organismo": "Ayuntamiento de Amurrio",
       "territorio": "Álava",
@@ -45375,7 +45375,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-direccion-y-ejecucion-obra-implantacion-sistema-geointercambio-su-puesta-servicio-optimizacion-y-su-mantenimiento-edificio-sede-servicios-centrales-lanbide-servicio-vasco-empleo-vitoria-gasteiz/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1121266552139532071",
+      "id": "1413822592599507418",
       "titulo": "Dirección de obra del Proyecto de Urbanización del ámbito Urbanístico LO-01Ciudad Jardín de Loiola",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -45622,7 +45622,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-proyecto-ejecucion-infraestructuras-recarga-electricas-centros-del-departamento-seguridad-dentro-del-marco-del-plan-recuperacion-transformacion-y-resiliencia-financiado-union-europe-nextgenerationeu/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "7379408249177220545",
+      "id": "3775724846021148982",
       "titulo": "Plan General Revisión",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -47104,7 +47104,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-ejecucion-direccion-facultativa-y-coordinacion-seguridad-y-salud-rehabilitacion-envolvente-termica-del-edificio-maternoinfantil-del-hospital-donostia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "4241056982127958026",
+      "id": "3989204748509281706",
       "titulo": "Redacción del Plan Especial de Ordenación Urbana. 400 VPP. Área Playa de vías Amara-Easo. Donostia.",
       "organismo": "Gobierno Vasco",
       "territorio": "Gipuzkoa",
@@ -59093,7 +59093,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-proyecto-ejecucion-direccion-facultativa-y-coordinacion-seguridad-y-salud-del-nuevo-centro-salud-loiola/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "3484126894261375386",
+      "id": "2526408035960662256",
       "titulo": "REDACCIÓN DEL PROYECTO DE REFORMA DEL GARBIGUNE DE AZKOITIA Y LA DIRECCIÓN DE OBRA",
       "organismo": "Mancomunidad de Urola Erdia",
       "territorio": "Gipuzkoa",
@@ -62000,7 +62000,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/obras-del-proyecto-ejecucion-reforma-y-ampliacion-del-centro-residencial-san-jose-azkoitia/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2855746855844620543",
+      "id": "1363519940666614287",
       "titulo": "Obras correspondientes al proyecto de ejecución de Villa Salia",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -62038,7 +62038,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/patrocinio-actividades-colaboracion-instituto-arquitectura-euskadi-talleres-y-actividades-didacticas-2023/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "2412679955378177798",
+      "id": "2995826171763192255",
       "titulo": "Proyecto de urbanización de la plaza Jesús María Alkain",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -62057,7 +62057,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/proyecto-urbanizacion-plaza-jesus-maria-alkain/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "5276568838011294138",
+      "id": "3981982744757451398",
       "titulo": "Revisión del Plan General",
       "organismo": "Ayuntamiento de Donostia/San Sebastián",
       "territorio": "Gipuzkoa",
@@ -63729,7 +63729,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/la-rehabilitacion-del-antiguo-mercado-abastos-amurrio-acuerdo-al-proyecto-obras-rehabilitacion-del-edificio-foru-kalea-9-como-centro-sociocultural-redactado-arzanegi-arquitectura-s-l-p-direccion-servicios-tecnicos-municipales/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "5976822861999532955",
+      "id": "4597722511316782178",
       "titulo": "Redacción de anteproyecto de \"Rehabilitación de los edificios existentes en la parcela catastral 383 del Polígono 1 de Berantevilla\"",
       "organismo": "Ayuntamiento de Berantevilla",
       "territorio": "Euskadi (Autonómico)",
@@ -64603,7 +64603,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/diseno-redaccion-proyecto-y-construccion-pumptrack-calles-butroi-y-larrabarri-municipio-derio/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "1718751637064877973",
+      "id": "3925112362710508047",
       "titulo": "Redacción del informe del diagnóstico del estado de la red de saneamiento del Polígono Industrial Goiain, municipio de Legutio y del proyecto básico de reparación.",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -64622,7 +64622,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/redaccion-del-informe-diagnostico-del-estado-red-saneamiento-del-poligono-industrial-goiain-municipio-legutio-y-del-proyecto-basico-reparacion/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "64019650065311666",
+      "id": "3821747782052317398",
       "titulo": "Redacción del proyecto constructivo de pretratamiento y decantador primario de la depuradora existente y del proyecto básico de la nueva depuradora en el Polígono Industrial Goiain, municipio de Legutio.",
       "organismo": "Alava Agencia de Desarrollo, S.A.",
       "territorio": "Álava",
@@ -69638,7 +69638,7 @@
       "enlace": "https://www.contratacion.euskadi.eus/anuncio_contratacion/servicio-direccion-obra-reurbanizacion-calle-santa-elena/webkpe00-kpesimpc/es/"
     },
     {
-      "id": "5739162904336552304",
+      "id": "3940106167680281829",
       "titulo": "Contratación de servicios de dirección de obra de instalaciones de televisión digital",
       "organismo": "ITELAZPI, S.A.",
       "territorio": "Euskadi (Autonómico)",
